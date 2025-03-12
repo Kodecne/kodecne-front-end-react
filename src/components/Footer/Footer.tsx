@@ -6,7 +6,7 @@ import gear from '../../assets/images/gear-solid.svg'
 export function Footer() {
     return (
         <footer>
-            <div className='left-items'>
+            <div className='left-items-footer'>
                 <div className='footer-item'>
                     <img src={exclamation} alt="" />
                     <div className='text-footer'>
@@ -30,8 +30,10 @@ export function Footer() {
                 </div>
             </div>
 
-            <div className='right-items'>
-
+            <div className='right-items-footer'>
+                <div className='Kodecne-Corporation'>
+                    <p>Kodecne Corporation © 2025</p>
+                </div>
             </div>
         </footer>
     )

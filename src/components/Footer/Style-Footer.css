@@ -4,17 +4,15 @@ footer {
     justify-content: space-between;
     padding: 0 5rem;
     width: 100%;
-    min-height: 200px;
+    min-height: 230px;
     margin-top: 50px;
 }
-.left-items {
+.left-items-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
-.right-items {
-    background-color: red;
+.right-items-footer {
     display: flex;
     align-items: center; /* Alinha os itens da direita verticalmente */
 }
@@ -41,4 +39,14 @@ footer div div a {
     font-size: 12px;
     text-indent: 1em;
     display: inline-block;
+}
+
+.Kodecne-Corporation {
+    display: flex;
+    flex-direction: column;
+    color: #6F6C6C;
+    height: 230px;
+}
+.Kodecne-Corporation p {
+    margin-top: 90%; /* Empurra o parágrafo para baixo */
 }

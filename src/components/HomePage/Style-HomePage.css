@@ -1,0 +1,67 @@
+.HomePage-1 {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.left-part {
+    width: 20%;
+    height: auto;
+    margin-left: 200px;
+}
+.left-part img {
+    width: 100%;
+    height: auto;
+}
+.right-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    margin-right: 200px;
+}
+.right-part p {
+    color: #222;
+    font-weight: 600;
+    text-align: center;
+}
+.kodecne-color {
+    color: #6A3696;
+}
+.entrar {
+    margin: 30px;
+}
+.entrar a {
+    margin: 20px;
+    background-color: #6A3696;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.HomePage-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 40px;
+}
+.HomePage-2 p {
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    margin-left: 20px;
+}
+.HomePage-2 img {
+    width: 200px;
+}
+.buscando-proficionais {
+    color: #6A3696;
+}
+.crie-seu-perfil {
+    color: #1F0E2E;
+    font-size: 20px;
+}
