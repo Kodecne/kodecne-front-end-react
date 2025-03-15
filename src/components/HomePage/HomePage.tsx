@@ -21,7 +21,5 @@ export function HomePage() {
                 <p><span className={style.buscandoProficionais}>Buscando profissionais qualificados para seu time tech?</span><br></br> O Kodecne conecta empresas a desenvolvedores<br></br> talentosos de forma rápida e eficiente.<br></br>💜 <span className={style.crieSeuPerfil}>Crie seu perfil agora e encontre seu próximo desenvolvedor!</span></p>
             </div>
         </>
-        
-        
     )
 }
