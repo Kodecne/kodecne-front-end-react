@@ -7,21 +7,21 @@ footer {
     min-height: 230px;
     margin-top: 50px;
 }
-.left-items-footer {
+.leftItemsFooter {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.right-items-footer {
+.rightItemsFooter {
     display: flex;
     align-items: center; /* Alinha os itens da direita verticalmente */
 }
-footer div div.footer-item {
+footer div div.footerItem {
     display: flex;
     width: 400px;
     margin-top: 15px;
 }
-footer div div div.text-footer {
+footer div div div.textFooter {
     margin-top: 3px;
     margin-left: 5px;
 }
@@ -41,12 +41,12 @@ footer div div a {
     display: inline-block;
 }
 
-.Kodecne-Corporation {
+.KodecneCorporation {
     display: flex;
     flex-direction: column;
     color: #6F6C6C;
     height: 230px;
 }
-.Kodecne-Corporation p {
+.KodecneCorporation p {
     margin-top: 90%; /* Empurra o parágrafo para baixo */
 }

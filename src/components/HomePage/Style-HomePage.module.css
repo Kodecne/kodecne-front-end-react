@@ -1,18 +1,18 @@
-.HomePage-1 {
+.HomePage01 {
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
 }
-.left-part {
+.leftPart {
     width: 20%;
     height: auto;
     margin-left: 200px;
 }
-.left-part img {
+.leftPart img {
     width: 100%;
     height: auto;
 }
-.right-part {
+.rightPart {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,12 +20,12 @@
     width: 450px;
     margin-right: 200px;
 }
-.right-part p {
+.rightPart p {
     color: #222;
     font-weight: 600;
     text-align: center;
 }
-.kodecne-color {
+.kodecneColor {
     color: #6A3696;
 }
 .entrar {
@@ -40,7 +40,7 @@
     color: white;
     font-weight: bold;
 }
-.HomePage-2 {
+.HomePage02 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,20 +48,20 @@
     text-align: center;
     padding-top: 40px;
 }
-.HomePage-2 p {
+.HomePage02 p {
     color: #222;
     font-weight: bold;
     text-align: center;
     font-size: 18px;
     margin-left: 20px;
 }
-.HomePage-2 img {
+.HomePage02 img {
     width: 200px;
 }
-.buscando-proficionais {
+.buscandoProficionais {
     color: #6A3696;
 }
-.crie-seu-perfil {
+.crie-seuPerfil {
     color: #1F0E2E;
     font-size: 20px;
 }
