@@ -4,12 +4,13 @@ import './styles/global.css'
 //import { Navbar } from './components/Navbar/Navbar.tsx'
 //import { HomePage } from './components/HomePage/HomePage.tsx'
 //import { Footer } from './components/Footer/Footer.tsx'
-import { LoginPage } from './components/LoginPage/LoginPage'
+//import { LoginPage } from './components/LoginPage/LoginPage'
+import { SobreNos } from './components/SobreNos/SobreNos'
 
 console.log('Renderizando o componente LoginPage...');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <LoginPage />
+    <SobreNos />
   </StrictMode>,
 )

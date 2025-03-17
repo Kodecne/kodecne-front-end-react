@@ -1,0 +1,8 @@
+.AlinhaImgAoCentro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kodecneTecnologyLogo {
+    width: 300px;
+}

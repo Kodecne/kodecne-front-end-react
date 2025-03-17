@@ -1,0 +1,24 @@
+.component {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column
+}
+.componentTitle {
+    padding: 0.4rem 0;
+    padding-right: 2rem;
+    width: fit-content;
+    background-color: #AC68A9;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.componentTitle h2 {
+    margin-left: 20px;
+}
+.componentDescription {
+    padding: 0 3rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+.lightedtextclass {
+    color: #6A3696;
+}
