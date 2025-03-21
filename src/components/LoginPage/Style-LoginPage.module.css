@@ -25,7 +25,6 @@
 .containerFormsColor {
     background-color: #EBDCFF;
     min-width: 50vh;
-    height: 60vh;
     border-radius: 30px;
 }
 .containerFormsColor img {
@@ -36,7 +35,6 @@
 .containerForms {
     width: 48vh;
     margin-left: 1vh;
-    height: 55vh;
     transform: translateY(-20%);
     display: flex;
     flex-direction: column;
