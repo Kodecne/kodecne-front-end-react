@@ -10,7 +10,7 @@ export function Footer() {
                 <div className='footer-item'>
                     <img src={exclamation} alt="" />
                     <div className='text-footer'>
-                       <h2>Sobre nós</h2>
+                        <h2>Sobre nós</h2>
                         <a href="/">Conheça nossa missão</a> 
                     </div>
                 </div>

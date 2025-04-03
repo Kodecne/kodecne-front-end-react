@@ -21,7 +21,7 @@ export function Navbar() {
     const handleMouseLeave = () => setIsDropdownVisible(false);
 
     return (
-      <header>
+    <header>
         <nav>
             <div className="left-items">
                 <div className="nav-logo">
