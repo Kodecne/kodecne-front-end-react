@@ -1,4 +1,4 @@
-import './Style-Footer.css';
+import './Style-Footer.module.css';
 import exclamation from '../../assets/images/circle-exclamation-solid.svg'
 import question from '../../assets/images/circle-question-solid.svg'
 import gear from '../../assets/images/gear-solid.svg'
