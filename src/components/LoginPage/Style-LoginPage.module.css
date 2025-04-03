@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.leftPart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+}
+.leftPart img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 70px;
+}
+.rigtPart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+}
+.containerFormsColor {
+    background-color: #EBDCFF;
+    min-width: 50vh;
+    border-radius: 30px;
+}
+.containerFormsColor img {
+    width: 15vh;
+    margin-left: 20px;
+    transform: translateY(-65%)
+}
+.containerForms {
+    width: 48vh;
+    margin-left: 1vh;
+    transform: translateY(-20%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
