@@ -5,7 +5,7 @@ import { HomePage } from "./components/HomePage/HomePage.tsx";
 import { Footer } from "./components/Footer/Footer.tsx"
 import { SobreNos } from "./components/SobreNos/SobreNos.tsx";
 import { LoginPage } from "./components/LoginPage/LoginPage.tsx";
-import { PerfilAddPessoas } from "./components/PerfilAddPessoas/PerfilAddPessoas.tsx";
+import { UserPerfil } from "./components/UserPerfil/UserPerfil.tsx";
 
 
 export function AppRoutes() {
@@ -14,7 +14,7 @@ export function AppRoutes() {
             <Route path="/" element={<><Navbar /><HomePage /><Footer /></>} />
             <Route path="/sobrenos" element={<SobreNos />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/perfil" element={<PerfilAddPessoas />} />
+            <Route path="/perfil" element={<><Navbar /><UserPerfil /></>} />
         </Routes>
     );
 }

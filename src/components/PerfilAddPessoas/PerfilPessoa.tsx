@@ -1,4 +1,5 @@
 import style from "./Style-PerfilAddPessoas.module.css"
+import seguirBu from "../../assets/images/seguir-button.png"
 
 type Pessoa = {
     id: string;
@@ -20,7 +21,7 @@ export function PerfilPessoa({ pessoa, onSeguir }: PerfilPessoaProps) {
                     <span className={style.nomePessoa}>{pessoa.nome}</span>
                 </div>
                 <button className={style.botaoSeguir} onClick={() => onSeguir(pessoa.id)}>
-                    Seguir
+                    <img src={seguirBu} alt="" />Seguir
                 </button>
             </div>
         </>
