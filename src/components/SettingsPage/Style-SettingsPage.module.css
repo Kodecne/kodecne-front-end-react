@@ -1,0 +1,100 @@
+.pageContainer {
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 8px;
+    padding: 2rem;
+    font-family: "Segoe UI", sans-serif;
+    color: #222;
+  }
+  
+  .pageTitle {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #222;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: #222;
+  }
+  
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #333;
+  }
+  
+  .inputField {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.6rem;
+    font-size: 0.95rem;
+    background-color: #fff;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .inputField:focus {
+    border-color: #D0B9E9;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(106, 54, 150, 0.2)
+  }
+  
+  .saveButton {
+    background-color: #6A3696;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .saveButton:hover {
+    background-color: #6A3696;
+  }
+  .saveButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+  
+  .secondaryButton {
+    width: 70%;
+    height: 50%;
+    background-color: #6A3696;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 5.5%;
+  }
+
+  .sectionContent {
+    padding-left: 1rem; /* ou ajuste para 1.5rem, 2rem se quiser mais espaço */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .sectionContent {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
