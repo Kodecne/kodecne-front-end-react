@@ -6,3 +6,11 @@ export interface User {
     imagem?: string;
     genero?: string;
 }
+export const mockUser = {
+    id: 1,
+    name: "Goku",
+    email: "goku@teste.com",
+    imagem: "https://th.bing.com/th/id/OIP.QHSi98dVjDtsDGj38XdLYQAAAA?rs=1&pid=ImgDetMain",
+    bio: "Desenvolvedor Teste",
+    genero: "Masculino"
+};

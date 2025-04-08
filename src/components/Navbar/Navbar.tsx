@@ -20,6 +20,11 @@ export function Navbar() {
     const handleMouseEnter = () => setIsDropdownVisible(true);
     const handleMouseLeave = () => setIsDropdownVisible(false);
 
+    function handleLogout(){
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+    }
+
     return (
     <header>
         <nav>
@@ -77,13 +82,13 @@ export function Navbar() {
                             <ul>
                                 <li onClick={() => console.log("Configurações")}>Configurações</li>
                                 <li onClick={() => console.log("Editar Perfil")}>Editar Perfil</li>
-                                <li onClick={() => console.log("Logout")}>Logout</li>
+                                <li onClick={handleLogout}>Logout</li>
                             </ul>
                         </div>
                     )}
                 </div>
             </div>
         </nav>
-      </header>
+    </header>
     )
 }
