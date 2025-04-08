@@ -7,6 +7,7 @@ import { SobreNos } from "./components/SobreNos/SobreNos.tsx";
 import { LoginPage } from "./components/LoginPage/LoginPage.tsx";
 import { UserPerfil } from "./components/UserPerfil/UserPerfil.tsx";
 import SettingsPage from "./components/SettingsPage/SettingsPage.tsx"
+import { Feed } from "./components/Feed/Feed.tsx";
 
 
 export function AppRoutes() {
@@ -17,6 +18,7 @@ export function AppRoutes() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/perfil" element={<><Navbar /><UserPerfil /></>} />
             <Route path="/settings" element={<><Navbar /><SettingsPage /></>} />
+            <Route path="/feed" element={<><Navbar /><Feed /></>} />
         </Routes>
     );
 }

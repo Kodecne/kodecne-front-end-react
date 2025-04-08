@@ -1,0 +1,85 @@
+.feedContainer {
+    width: 45%;
+    margin: 20px;
+}
+.postCard {
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+  }
+  
+  .cabecalho {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+  
+  .fotoPerfil {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+  }
+  
+  .cabecalho div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .data {
+    font-size: 0.8rem;
+    color: #888;
+  }
+  
+  .conteudo {
+    font-size: 1rem;
+    color: #333;
+    margin: 12px 0;
+    white-space: pre-line;
+  }
+  
+  .imagemPost {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 12px;
+  }
+  
+  .acoesPost {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+  }
+  
+  .botaoAcao {
+    background: none;
+    border: none;
+    color: #555;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .botaoAcao:hover {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+  .icone {
+    font-size: 1.1rem;
+  }
+  
