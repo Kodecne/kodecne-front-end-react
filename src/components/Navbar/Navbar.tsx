@@ -34,10 +34,6 @@ export function Navbar() {
         }
         obterUsuario()
     }, [])
-    useEffect(() => {
-        console.log(userData);
-
-    }, [userData])
 
     return (
     <header>
@@ -98,7 +94,7 @@ export function Navbar() {
                     {isDropdownVisible && (
                         <div className={style.navbarDropdown}>
                             <ul>
-                                <li onClick={() => console.log("Configurações")}>Configurações</li>
+                                <li onClick={() => navigate('/settings')}>Configurações</li>
                                 <li onClick={handleLogout}>Logout</li>
                             </ul>
                         </div>

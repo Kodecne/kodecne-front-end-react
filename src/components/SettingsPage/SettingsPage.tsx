@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from "./Style-SettingsPage.module.css";
+import api from '../../services/api';
 
 type SectionProps = {
   title: string;
@@ -40,11 +41,11 @@ const SettingsPage = () => {
     name: '',
     bio: '',
     email: '',
-    phone: '',
-    address: '',
-    education: '',
-    gender: '',
-    birthdate: '',
+    telefone: '',
+    endereco: '',
+    escolaridade: '',
+    genero: '',
+    data_nascimento: '',
     instagram: '',
     github: '',
   });
@@ -60,9 +61,24 @@ const SettingsPage = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Dados enviados:', formData);
-    // aqui você pode fazer a requisição à API
+    e.preventDefault()
+
+    // Cria um novo objeto apenas com campos preenchidos
+    const dadosFiltrados = Object.fromEntries(
+      Object.entries(formData).filter(([_, value]) => value.trim() !== "")
+    );
+
+    const atualizarDados = async()=>{
+      try{
+        const response = await api.patch('/users/me/', dadosFiltrados)
+        console.warn(response);
+        alert("Scesso!")
+      }catch(error){
+        console.error("errooooooooo", error);
+        alert("Erro")
+      }
+    }
+    atualizarDados()
   };
 
   const handleSendCode = () => {
@@ -97,11 +113,11 @@ const SettingsPage = () => {
       <Section title="Perfil">
         <InputField label="Nome" name="name" value={formData.name} onChange={handleChange} />
         <InputField label="Bio" name="bio" value={formData.bio} onChange={handleChange} />
-        <InputField label="Telefone" name="phone" value={formData.phone} onChange={handleChange} />
-        <InputField label="Endereço" name="address" value={formData.address} onChange={handleChange} />
-        <InputField label="Escolaridade" name="education" value={formData.education} onChange={handleChange} />
-        <InputField label="Gênero" name="gender" value={formData.gender} onChange={handleChange} />
-        <InputField label="Data de nascimento" type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} />
+        <InputField label="Telefone" name="telefone" value={formData.telefone} onChange={handleChange} />
+        <InputField label="Endereço" name="endereco" value={formData.endereco} onChange={handleChange} />
+        <InputField label="Escolaridade" name="escolaridade" value={formData.escolaridade} onChange={handleChange} />
+        <InputField label="Gênero" name="genero" value={formData.genero} onChange={handleChange} />
+        <InputField label="Data de nascimento" type="date" name="data_nascimento" value={formData.data_nascimento} onChange={handleChange} />
       </Section>
 
       <Section title="Redes Sociais">

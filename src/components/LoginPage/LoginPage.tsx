@@ -37,15 +37,13 @@ export function LoginPage() {
         }
 
         try {
-            await api.post('users/register/', {
+            await api.post('/users/register/', {
                 email: email,
                 name: username,
                 password: password,
             });
 
-            alert("Cadastro realizado com sucesso! Agora é só logar.");
-            // Se quiser: mude a view pra login após cadastro
-            window.location.reload(); // ou alguma navegação controlada
+            alert("Verifique seu e-mail e acesse o link de verificação.");
         } catch (error) {
             console.error(error);
             alert("Erro ao registrar. Verifique os dados.");
