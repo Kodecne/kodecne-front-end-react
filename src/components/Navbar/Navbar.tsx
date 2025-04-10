@@ -61,7 +61,7 @@ export function Navbar() {
                         <img src={home} alt="Home" />
                         <p>Início</p>
                     </Link>
-                    <Link to={""} className={style.item}>
+                    <Link to={"/feed"} className={style.item}>
                         <img src={feed} alt="Feed" />
                         <p>Feed</p>
                     </Link>

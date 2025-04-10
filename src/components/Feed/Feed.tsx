@@ -1,10 +1,24 @@
 import { PostCard } from "./PostCard";
 import { useState } from "react";
 import { Post } from "./PostCard"; // importa o tipo correto daqui!
+import { useEffect } from "react";
+import { User } from "../../types/User";
+import { fetchMe } from "../../services/userService";
 import style from "./Style-PostCard.module.css";
 
 export function Feed() {
   const [posts, setPosts] = useState<Post[]>([
+    {
+      id: "3",
+      autor: {
+        id: "45",
+        nome: "Padre Marcelo Rossi",
+        imagem: "https://curtamais.com.br/uploads/conteudos/a4501b789f129ecc9019b694c8cd8436.jpg"
+      },
+      conteudo: "E ainda se vier noites traiçoeiras...",
+      data: "2 segundos atrás",
+      imagem: "https://th.bing.com/th/id/OIP.dKFkRP4Pl27FXtBovZ9AdAAAAA?rs=1&pid=ImgDetMain"
+    },
     {
       id: "1",
       autor: {
@@ -27,6 +41,19 @@ export function Feed() {
       imagem: "https://picsum.photos/400/200"
     }
   ]);
+
+  const[userData, setUserData] = useState<User | null>(null);
+  useEffect(() => {
+    async function obterUsuario() {
+      const user = await fetchMe()
+      setUserData(user)
+    }
+    obterUsuario()
+  }, [])
+  useEffect(() => {
+    console.log(userData);
+
+  }, [userData])
 
   return (
     <div className={style.feedContainer}>
