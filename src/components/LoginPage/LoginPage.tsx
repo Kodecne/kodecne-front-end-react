@@ -3,6 +3,7 @@ import style from './Style-LoginPage.module.css';
 import kodecneTecnology from '../../assets/images/kodecne-tecnology-large.png'
 import light from '../../assets/images/light.svg'
 import LoginPageForm from '../LoginPageForm/LoginPageForm';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
@@ -59,7 +60,9 @@ export function LoginPage() {
     return (
         <div className={style.container}>
             <div className={style.leftPart}>
-                <img src={kodecneTecnology} alt="" />
+                <Link to={'/'}>
+                    <img src={kodecneTecnology} alt="" />
+                </Link>
             </div>
             <div className={style.rigtPart}>
                 <div className={style.containerFormsColor}>
