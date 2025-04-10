@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { User } from "../../types/User";
 import { fetchMe } from "../../services/userService";
 import style from "./Style-PostCard.module.css";
+import { CriarPost } from "./CriarPost";
 
 export function Feed() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -58,6 +59,7 @@ export function Feed() {
 
   return (
     <div className={style.feedContainer}>
+      <CriarPost/>
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}

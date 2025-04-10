@@ -4,8 +4,8 @@ footer {
     justify-content: space-between;
     padding: 0 5rem;
     width: 100%;
-    min-height: 230px;
     margin-top: 50px;
+    padding-bottom: 30px;
 }
 .leftItemsFooter {
     display: flex;
@@ -39,14 +39,4 @@ footer div div a {
     font-size: 12px;
     text-indent: 1em;
     display: inline-block;
-}
-
-.KodecneCorporation {
-    display: flex;
-    flex-direction: column;
-    color: #6F6C6C;
-    height: 230px;
-}
-.KodecneCorporation p {
-    margin-top: 90%; /* Empurra o parágrafo para baixo */
 }

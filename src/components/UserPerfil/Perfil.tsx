@@ -7,6 +7,7 @@ import githubLogo from "../../assets/images/github-logo.png"
 // import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 
+
 type PerfilProps = {
     avatarUrl: string
     nome: string

@@ -82,4 +82,118 @@
   .icone {
     font-size: 1.1rem;
   }
+
+
+  
+
+
+
+
+  .caixaCriarPost {
+    display: flex;
+    flex-direction: column;
+    background-color: #EBDCFF;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 16px;
+  }
+  
+  .textarea {
+    min-height: 100px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    resize: vertical;
+    margin-bottom: 12px;
+  }
+  
+  .inputFile {
+    margin-bottom: 12px;
+  }
+  
+  .previewContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .previewImagem {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .previewVideoContainer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+  }
+  
+  .previewVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    filter: brightness(0.6);
+  }
+  
+  .videoOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 4px 8px;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+  
+  .botao {
+    align-self: flex-end;
+    background-color: #6A3696;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-right: 10px;
+  }
+  
+  .botao:hover {
+    background-color: #54297b;
+  }
+  .inputFileLabel {
+    display: inline-block;
+    background-color: #6A3696;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+    width: fit-content;
+    margin-bottom: 12px;
+  }
+  
+  .inputFileLabel:hover {
+    background-color: #54297b;
+  }
+  
+  .inputFile {
+    display: none;
+  }
+  
   
