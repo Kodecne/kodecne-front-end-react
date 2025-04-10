@@ -103,7 +103,7 @@ header nav div a p {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #222;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -122,7 +122,7 @@ header nav div a p {
   }
   
   .navbarDropdown li:hover {
-    background-color: #333;
+    background-color: #e3d0f9;
   }
 
   .leftItems {

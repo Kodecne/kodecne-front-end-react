@@ -1,5 +1,6 @@
 import style from './Style-HomePage.module.css';
 import cadastrese from '../../assets/images/cadastrese.png'
+import {Link} from "react-router-dom"
 import pc from '../../assets/images/pc.png'
 
 export function HomePage() {
@@ -9,8 +10,8 @@ export function HomePage() {
                 <div className={style.leftPart}><img src={cadastrese} alt="" /></div>
                 <div className={style.rightPart}>
                     <div className={style.entrar}>
-                        <a href="">CADASTRAR</a>
-                        <a href="">ENTRAR</a>
+                        <Link to={'/login'}>CADASTRAR</Link>
+                        <Link to={'/login'}>ENTRAR</Link>
                     </div>
                     <p>O <span className={style.kodecneColor}>Kodecne</span> é o espaço perfeito para desenvolvedores de todos os níveis se conectarem, compartilharem conhecimento e crescerem juntos. Aqui, você encontra um ambiente interativo feito por devs, para devs, onde pode discutir tecnologias, postar seus projetos, tirar dúvidas e se inspirar com a comunidade.</p>
                 </div>

@@ -4,6 +4,8 @@ import seguirBu from "../../assets/images/seguir-button.png"
 import enviarMensagemBu from "../../assets/images/enviar-mensagem-button.png"
 import instagramLogo from "../../assets/images/insta-logo.png"
 import githubLogo from "../../assets/images/github-logo.png"
+// import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 type PerfilProps = {
     avatarUrl: string
@@ -16,6 +18,15 @@ type PerfilProps = {
 }
 
 export function Perfil({avatarUrl, nome, localidade, descricao, formacao, instagram, github}: PerfilProps) {
+    // const navigate = useNavigate()
+    useEffect(()=>{
+        const token = localStorage.getItem("accessToken");
+        console.warn(token);
+        // if(!token){
+        //     navigate('/login')
+        // }
+        
+    })
     return (
         <div className={style.background}>
             <div className={style.topBackground}>

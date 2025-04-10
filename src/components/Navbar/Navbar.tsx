@@ -1,18 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "lucide-react";
 import style from './Style-Navbar.module.css';
 import navLogo from '../../assets/images/logo kodecne.svg';
 import home from '../../assets/images/home.svg';
+import { Link } from "react-router-dom";
 import feed from '../../assets/images/feed.svg';
 import messages from '../../assets/images/messages.svg';
 import notification from '../../assets/images/notifications.svg';
 import code from '../../assets/images/code.svg';
-import defaultAvatar from '../../assets/images/default-avatar.webp'
-
-// Usuário fictício (simulação)
-const user = {
-    profileImage: null // Troque para uma URL válida se desejar testar com uma imagem real
-};
+import { useNavigate } from "react-router-dom";
+import { mockUser, User } from "../../types/User";
+import { fetchMe } from "../../services/userService";
 
 export function Navbar() {
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -20,18 +18,36 @@ export function Navbar() {
     const handleMouseEnter = () => setIsDropdownVisible(true);
     const handleMouseLeave = () => setIsDropdownVisible(false);
 
+    const navigate = useNavigate()
+    
     function handleLogout(){
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
+        navigate('/login')
     }
+
+    const[userData, setUserData] = useState<User>(mockUser);
+    useEffect(() => {
+        async function obterUsuario() {
+            const user = await fetchMe()
+            setUserData(user)
+        }
+        obterUsuario()
+    }, [])
+    useEffect(() => {
+        console.log(userData);
+
+    }, [userData])
 
     return (
     <header>
         <nav>
             <div className={style.leftItems}>
-                <div className={style.navLogo}>
-                    <img src={navLogo} alt="Logo" />
-                </div>
+                    <div className={style.navLogo}>
+                        <Link to={"/"}>
+                            <img src={navLogo} alt="Logo" />
+                        </Link>
+                    </div>
 
                 <div className={style.searchContainer}>
                     <span className={style.materialSymbolsOutlined}>search</span>
@@ -41,26 +57,26 @@ export function Navbar() {
             
             <div className={style.rightItems}>
                 <div className={style.navItems}>
-                    <a className={style.item} href="/">
+                    <Link to={"/"} className={style.item}>
                         <img src={home} alt="Home" />
                         <p>Início</p>
-                    </a>
-                    <a className={style.item} href="/">
+                    </Link>
+                    <Link to={""} className={style.item}>
                         <img src={feed} alt="Feed" />
                         <p>Feed</p>
-                    </a>
-                    <a className={style.item} href="/">
+                    </Link>
+                    <Link to={""} className={style.item}>
                         <img src={messages} alt="Mensagens" />
                         <p>Mensagens</p>
-                    </a>
-                    <a className={style.item} href="/">
-                        <img src={notification} alt="Notificações" />
+                    </Link>
+                    <Link to={""} className={style.item} >
+                        <img src={notification} alt="Notificações"/>
                         <p>Notificações</p>
-                    </a>
-                    <a className={style.item} href="/">
+                    </Link>
+                    <Link to={""} className={style.item} >
                         <img src={code} alt="Code Together" />
                         <p>Code Together</p>
-                    </a>
+                    </Link>
                 </div>
 
                 <div 
@@ -68,20 +84,21 @@ export function Navbar() {
                     onMouseEnter={handleMouseEnter} 
                     onMouseLeave={handleMouseLeave}
                 >
-                    <button className={style.navbarAvatarButton}>
-                        <img
-                            src={user?.profileImage || defaultAvatar}
-                            alt="Avatar"
-                            className={style.navbarAvatar}
-                        />
-                        <ChevronDownIcon className={style.navbarChevron} />
-                    </button>
+                    <Link to={"/perfil"}>
+                        <button className={style.navbarAvatarButton}>
+                            <img
+                                src={userData.imagem}
+                                alt="Avatar"
+                                className={style.navbarAvatar}
+                            />
+                            <ChevronDownIcon className={style.navbarChevron} />
+                        </button>
+                    </Link>
 
                     {isDropdownVisible && (
                         <div className={style.navbarDropdown}>
                             <ul>
                                 <li onClick={() => console.log("Configurações")}>Configurações</li>
-                                <li onClick={() => console.log("Editar Perfil")}>Editar Perfil</li>
                                 <li onClick={handleLogout}>Logout</li>
                             </ul>
                         </div>

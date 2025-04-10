@@ -1,29 +1,22 @@
 
 import style from "./Style-UserPerfil.module.css"
-import api from "../../services/api"
+import { fetchMe } from "../../services/userService"
 import { PerfilAddPessoas } from "../PerfilAddPessoas/PerfilAddPessoas"
 import { Perfil } from "./Perfil"
 import { useEffect, useState } from "react"
-import { User, mockUser } from "../../types/User"
+import { mockUser, User } from "../../types/User"
 
 export function UserPerfil() {
-    const [userData, setUserData] = useState<User|null>(null);
+    const [userData, setUserData] = useState<User>(mockUser);
     useEffect(()=>{
-        const fetchUser = async ()=>{
-            try{
-                const response = await api.get<User>('users/me')
-                setUserData(response.data)
-            }
-            catch(error){
-                console.log("Erro ao buscar dados do usuário:", error)
-                setUserData(mockUser)
-            }
+        async function obterUsuario(){
+            const user = await fetchMe()
+            setUserData(user)
         }
-        fetchUser()
+        obterUsuario()
     }, [])
     useEffect(()=>{
         console.log(userData);
-        
     }, [userData])
     return (
         <>
