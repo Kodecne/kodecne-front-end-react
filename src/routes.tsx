@@ -14,10 +14,10 @@ export function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<><Navbar /><HomePage /><Footer /></>} />
-            <Route path="/sobrenos" element={<SobreNos />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/sobrenos" element={<><Navbar /><SobreNos /><Footer /></>} />
+            <Route path="/login" element={<><Navbar/><LoginPage /><Footer/></>} />
             <Route path="/perfil" element={<><Navbar /><UserPerfil /></>} />
-            <Route path="/settings" element={<><Navbar /><SettingsPage /></>} />
+            <Route path="/settings" element={<><Navbar /><SettingsPage /><Footer/></>} />
             <Route path="/feed" element={<><Navbar /><Feed /></>} />
         </Routes>
     );

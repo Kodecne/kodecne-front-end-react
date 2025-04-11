@@ -1,6 +1,8 @@
 import api from "./api";
 import { mockUser, User } from "../types/User";
 
+const SO_FRONT = false
+
 // Função para buscar todos os usuários
 export async function getUsers(): Promise<User[]> {
     try {
@@ -11,13 +13,13 @@ export async function getUsers(): Promise<User[]> {
         return []; // Retorna um array vazio em caso de erro
     }
 }
-export async function fetchMe(){
+export async function fetchMe(): Promise<User | null>{
     try{
         const response = await api.get<User>('users/me')
         return response.data
     }
     catch(error){
         console.log("Erro ao buscar dados do usuário:", error)
-        return mockUser
+        return SO_FRONT ? mockUser : null
     }
 }

@@ -5,6 +5,7 @@ import light from '../../assets/images/light.svg'
 import LoginPageForm from '../LoginPageForm/LoginPageForm';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export function LoginPage() {
     const navigate = useNavigate()
@@ -21,18 +22,18 @@ export function LoginPage() {
 
             localStorage.setItem('accessToken', access);
             localStorage.setItem('refreshToken', refresh);
-
+            toast.success('Logado com sucesso!')
             navigate('/perfil')
         } catch (error) {
             console.error(error);
-            alert("Erro ao fazer login. Verifique suas credenciais.");
+            toast.error("Ocorreu um erro no login. Verifique suas credenciais.")
         }
     };
 
     const handleRegister = async (username: string, email: string, password: string, confirmPassword: string) => {
         console.log('Register:', username, email, password, confirmPassword);
         if (password !== confirmPassword) {
-            alert("As senhas não coincidem!");
+            toast.warning("As senhas não coincidem!");
             return;
         }
 
@@ -43,17 +44,16 @@ export function LoginPage() {
                 password: password,
             });
 
-            alert("Verifique seu e-mail e acesse o link de verificação.");
+            toast.warning("Verifique seu e-mail para confirmar seu registro.")
         } catch (error) {
             console.error(error);
-            alert("Erro ao registrar. Verifique os dados.");
+            toast.error("Erro ao registrar. Verifique os dados.");
         }
     };
 
     const handleResetPassword = (username: string) => {
         console.log('Reset Password:', username);
     };
-
 
     return (
         <div className={style.container}>

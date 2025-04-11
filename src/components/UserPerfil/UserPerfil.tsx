@@ -4,13 +4,18 @@ import { fetchMe } from "../../services/userService"
 import { PerfilAddPessoas } from "../PerfilAddPessoas/PerfilAddPessoas"
 import { Perfil } from "./Perfil"
 import { useEffect, useState } from "react"
-import { mockUser, User } from "../../types/User"
+import { User } from "../../types/User"
+import { useNavigate } from "react-router-dom"
 
 export function UserPerfil() {
-    const [userData, setUserData] = useState<User>(mockUser);
+    const [userData, setUserData] = useState<User|null>(null);
+    const navigate = useNavigate()
     useEffect(()=>{
         async function obterUsuario(){
             const user = await fetchMe()
+            if (user == null){
+                navigate('/login')
+            }
             setUserData(user)
         }
         obterUsuario()

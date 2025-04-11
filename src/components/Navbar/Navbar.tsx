@@ -9,7 +9,7 @@ import messages from '../../assets/images/messages.svg';
 import notification from '../../assets/images/notifications.svg';
 import code from '../../assets/images/code.svg';
 import { useNavigate } from "react-router-dom";
-import { mockUser, User } from "../../types/User";
+import { User } from "../../types/User";
 import { fetchMe } from "../../services/userService";
 
 export function Navbar() {
@@ -26,7 +26,7 @@ export function Navbar() {
         navigate('/login')
     }
 
-    const[userData, setUserData] = useState<User>(mockUser);
+    const[userData, setUserData] = useState<User|null>(null);
     useEffect(() => {
         async function obterUsuario() {
             const user = await fetchMe()
@@ -39,16 +39,16 @@ export function Navbar() {
     <header>
         <nav>
             <div className={style.leftItems}>
-                    <div className={style.navLogo}>
-                        <Link to={"/"}>
-                            <img src={navLogo} alt="Logo" />
-                        </Link>
-                    </div>
+                <div className={style.navLogo}>
+                    <Link to={"/"}>
+                        <img src={navLogo} alt="Logo" />
+                    </Link>
+                </div>
 
-                <div className={style.searchContainer}>
+                {userData&&(<div className={style.searchContainer}>
                     <span className={style.materialSymbolsOutlined}>search</span>
                     <input type="text" placeholder="Pesquisar..." />
-                </div>
+                </div>)}
             </div>
             
             <div className={style.rightItems}>
@@ -80,7 +80,7 @@ export function Navbar() {
                     onMouseEnter={handleMouseEnter} 
                     onMouseLeave={handleMouseLeave}
                 >
-                    <Link to={"/perfil"}>
+                    {userData && (<Link to={"/perfil"}>
                         <button className={style.navbarAvatarButton}>
                             <img
                                 src={userData.imagem}
@@ -89,7 +89,7 @@ export function Navbar() {
                             />
                             <ChevronDownIcon className={style.navbarChevron} />
                         </button>
-                    </Link>
+                    </Link>)}
 
                     {isDropdownVisible && (
                         <div className={style.navbarDropdown}>

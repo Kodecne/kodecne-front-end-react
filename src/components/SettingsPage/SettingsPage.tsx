@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchMe } from '../../services/userService';
+import { useNavigate } from 'react-router-dom';
 import style from "./Style-SettingsPage.module.css";
 import api from '../../services/api';
+import { toast } from 'react-toastify';
 
 type SectionProps = {
   title: string;
@@ -50,10 +53,22 @@ const SettingsPage = () => {
     github: '',
   });
 
+  const navigate = useNavigate()
+  const [profileImage, setProfileImage] = useState<File | null>(null);
   const [newEmail, setNewEmail] = useState('');
   const [emailCode, setEmailCode] = useState('');
   const [emailCodeSent, setEmailCodeSent] = useState(false);
   const [generatedCode, setGeneratedCode] = useState('');
+
+  useEffect(()=>{
+    async function obterUsuario(){
+        const user = await fetchMe()
+        if (user == null){
+            navigate('/login')
+        }
+    }
+    obterUsuario()
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -68,14 +83,26 @@ const SettingsPage = () => {
       Object.entries(formData).filter(([_, value]) => value.trim() !== "")
     );
 
+    const form = new FormData()
+    Object.entries(dadosFiltrados).forEach(([key, value]) => {
+      form.append(key, value);
+    });
+
+    if (profileImage) {
+      form.append("imagem", profileImage);
+    }
+
     const atualizarDados = async()=>{
       try{
-        const response = await api.patch('/users/me/', dadosFiltrados)
-        console.warn(response);
-        alert("Scesso!")
+        await api.patch('/users/me/', form, {
+          headers:{
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        toast.success("Informações atualizadas com sucesso!")
       }catch(error){
         console.error("errooooooooo", error);
-        alert("Erro")
+        toast.error("Ocorreu um erro ao processar as informações.")
       }
     }
     atualizarDados()
@@ -112,6 +139,16 @@ const SettingsPage = () => {
 
       <Section title="Perfil">
         <InputField label="Nome" name="name" value={formData.name} onChange={handleChange} />
+        <div className={style.inputContainer}>
+          <label htmlFor="imagem" className={style.label}>Imagem de Perfil</label>
+          <input id="imagem" name="imagem" className={style.inputField} type="file" accept="image/*"
+          onChange={(e) => {
+            if (e.target.files) {
+              setProfileImage(e.target.files[0]);
+            }
+          }}
+          />
+        </div>
         <InputField label="Bio" name="bio" value={formData.bio} onChange={handleChange} />
         <InputField label="Telefone" name="telefone" value={formData.telefone} onChange={handleChange} />
         <InputField label="Endereço" name="endereco" value={formData.endereco} onChange={handleChange} />

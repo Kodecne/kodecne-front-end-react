@@ -4,7 +4,7 @@ import seguirBu from "../../assets/images/seguir-button.png"
 import enviarMensagemBu from "../../assets/images/enviar-mensagem-button.png"
 import instagramLogo from "../../assets/images/insta-logo.png"
 import githubLogo from "../../assets/images/github-logo.png"
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 
 
@@ -19,13 +19,8 @@ type PerfilProps = {
 }
 
 export function Perfil({avatarUrl, nome, localidade, descricao, formacao, instagram, github}: PerfilProps) {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     useEffect(()=>{
-        const token = localStorage.getItem("accessToken");
-        console.warn(token);
-        // if(!token){
-        //     navigate('/login')
-        // }
         
     })
     return (
@@ -45,7 +40,7 @@ export function Perfil({avatarUrl, nome, localidade, descricao, formacao, instag
                 </div>
 
                 <div className={style.buttonDinamic}>
-                    <button className={style.oButton}>Editar Perfil<img src={editPerfilBu} alt="" /></button>
+                    <button className={style.oButton} onClick={()=>navigate('/settings')}>Editar Perfil<img src={editPerfilBu} alt="" /></button>
                     <button className={style.oButton}><img src={seguirBu} alt="" />Seguir</button>
                     <button className={style.oButton}><img src={enviarMensagemBu} alt="" />Enviar Mensagem</button>
                 </div>

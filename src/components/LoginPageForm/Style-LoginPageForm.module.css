@@ -35,6 +35,7 @@
     color: #6A3696;
     font-size: 14px;
     margin-top: 30px;
+    cursor: pointer;
 }
 .buttonLink {
     background-color: transparent;
@@ -44,6 +45,7 @@
     margin-top: 5px;
     font-size: 14px;
     margin-left: 150px;
+    cursor: pointer;
 }
 .buttonM {
     background-color: #6A3696;
@@ -53,6 +55,7 @@
     color: white;
     font-size: 13px;
     margin-top: 10px;
+    cursor: pointer;
 }
 .center {
     display: flex;
