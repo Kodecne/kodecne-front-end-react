@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchMe } from '../../services/userService';
 import { useNavigate } from 'react-router-dom';
 import style from "./Style-SettingsPage.module.css";
-import api from '../../services/api';
+import api, {errorToastHandler} from '../../services/api';
 import { toast } from 'react-toastify';
 
 type SectionProps = {
@@ -49,7 +49,7 @@ const SettingsPage = () => {
     escolaridade: '',
     genero: '',
     data_nascimento: '',
-    instagram: '',
+    linkedin: '',
     github: '',
   });
 
@@ -65,6 +65,19 @@ const SettingsPage = () => {
         const user = await fetchMe()
         if (user == null){
             navigate('/login')
+        }else{
+          setFormData({
+            name: user.name || '',
+            bio: user.bio || '',
+            email: user.email || '',
+            telefone: user.telefone || '',
+            endereco: user.localidade || '',
+            escolaridade: user.escolaridade || '',
+            genero: user.genero || '',
+            data_nascimento: user.data_nascimento || '',
+            linkedin: user.linkedin || '',
+            github: user.github || '',
+          });
         }
     }
     obterUsuario()
@@ -100,9 +113,9 @@ const SettingsPage = () => {
           }
         })
         toast.success("Informações atualizadas com sucesso!")
-      }catch(error){
+      }catch(error:any){
         console.error("errooooooooo", error);
-        toast.error("Ocorreu um erro ao processar as informações.")
+        errorToastHandler(error)
       }
     }
     atualizarDados()
@@ -132,7 +145,6 @@ const SettingsPage = () => {
       alert('Código incorreto. Tente novamente.');
     }
   };
-
   return (
     <form onSubmit={handleSubmit} className={style.pageContainer}>
       <h1 className={style.pageTitle}>Configurações</h1>
@@ -157,8 +169,8 @@ const SettingsPage = () => {
         <InputField label="Data de nascimento" type="date" name="data_nascimento" value={formData.data_nascimento} onChange={handleChange} />
       </Section>
 
-      <Section title="Redes Sociais">
-        <InputField label="Instagram" name="instagram" value={formData.instagram} onChange={handleChange} />
+      <Section title="Links Externos">
+        <InputField label="Linkedin" name="linkedin" value={formData.linkedin} onChange={handleChange} />
         <InputField label="GitHub" name="github" value={formData.github} onChange={handleChange} />
       </Section>
 

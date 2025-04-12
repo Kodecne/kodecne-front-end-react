@@ -1,4 +1,4 @@
-import api from '../../services/api';
+import api, {errorToastHandler} from '../../services/api';
 import style from './Style-LoginPage.module.css';
 import kodecneTecnology from '../../assets/images/kodecne-tecnology-large.png'
 import light from '../../assets/images/light.svg'
@@ -26,7 +26,7 @@ export function LoginPage() {
             navigate('/perfil')
         } catch (error) {
             console.error(error);
-            toast.error("Ocorreu um erro no login. Verifique suas credenciais.")
+            errorToastHandler(error)
         }
     };
 
@@ -47,7 +47,7 @@ export function LoginPage() {
             toast.warning("Verifique seu e-mail para confirmar seu registro.")
         } catch (error) {
             console.error(error);
-            toast.error("Erro ao registrar. Verifique os dados.");
+            errorToastHandler(error)
         }
     };
 

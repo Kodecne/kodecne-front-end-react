@@ -2,9 +2,15 @@ export interface User {
     id: number;
     name: string;
     email: string;
+    telefone?: string;
     bio?: string;  // o ? significa que o campo é opcional major
     imagem?: string;
     genero?: string;
+    data_nascimento?: string;
+    escolaridade?: string;
+    localidade?: string
+    linkedin?:string
+    github?:string
 }
 export const mockUser = {
     id: 1,

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import style from "./Style-PostCard.module.css";
+import api, { errorToastHandler } from "../../services/api";
+import { toast } from "react-toastify";
 
 export function CriarPost() {
   const [conteudo, setConteudo] = useState("");
@@ -13,19 +15,31 @@ export function CriarPost() {
     setPreviewMidias(previews);
   };
 
-  const handlePostar = () => {
+  const handlePostar = async () => {
     if (!conteudo.trim()) {
       alert("Escreva algo antes de postar!");
       return;
     }
 
-    // Aqui você pode botar o back
-    console.log("Post criado:", { conteudo, midias });
-
-    alert("Post criado (simulado)!");
-    setConteudo("");
-    setMidias([]);
-    setPreviewMidias([]);
+    const form = new FormData()
+    form.append("conteudo", conteudo)
+    midias.forEach((midia, index)=>{
+      form.append("midias", midia)
+      index
+    })
+    try{
+      api.post('/posts/', form, {
+        headers:{
+          "Content-Type":'multipart/form-data'
+        }
+      })
+      toast.success("Post criado com sucesso!")
+      setConteudo("");
+      setMidias([]);
+      setPreviewMidias([]);
+    }catch(error){
+      errorToastHandler(error)
+    }
   };
 
   const isVideo = (file: File) => file.type.startsWith("video");

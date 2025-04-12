@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const baseURL = "http://127.0.0.1:8000/"
 
@@ -25,5 +26,23 @@ api.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
+export function errorToastHandler(error:any){
+    if (error.response && error.response.data) {
+        const data = error.response.data
+        if (typeof data === 'object') {
+            const mensagens = Object.entries(data)
+                .map(([campo, msgs]) => `${campo}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
+                .join('\n');
+            toast.error(mensagens);
+        } else if (typeof data === 'string') {
+            toast.error(data);
+        } else {
+            toast.error("Erro ao atualizar. Tente novamente.");
+        }
+    } else {
+        toast.error("Erro inesperado. Verifique sua conexão.");
+    }
+}
 
 export default api;

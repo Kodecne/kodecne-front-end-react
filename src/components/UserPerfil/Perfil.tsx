@@ -2,7 +2,7 @@ import style from "./Style-UserPerfil.module.css"
 import editPerfilBu from "../../assets/images/editar-perfil-button.png"
 import seguirBu from "../../assets/images/seguir-button.png"
 import enviarMensagemBu from "../../assets/images/enviar-mensagem-button.png"
-import instagramLogo from "../../assets/images/insta-logo.png"
+import linkedinLogo from "../../assets/images/linkedin-logo.png"
 import githubLogo from "../../assets/images/github-logo.png"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
@@ -11,14 +11,14 @@ import { useEffect } from "react"
 type PerfilProps = {
     avatarUrl: string
     nome: string
-    localidade: string
-    descricao: string
-    formacao: string
-    instagram?: string
+    localidade?: string
+    bio?: string
+    escolaridade?: string
+    linkedin?: string
     github?: string
 }
 
-export function Perfil({avatarUrl, nome, localidade, descricao, formacao, instagram, github}: PerfilProps) {
+export function Perfil({avatarUrl, nome, localidade, bio, escolaridade, linkedin, github}: PerfilProps) {
     const navigate = useNavigate()
     useEffect(()=>{
         
@@ -35,7 +35,7 @@ export function Perfil({avatarUrl, nome, localidade, descricao, formacao, instag
                         <p>{localidade}</p>
                     </div>
                     <div className={style.rigthInfos}>
-                        <p>{formacao}</p>
+                        <p>{escolaridade}</p>
                     </div>
                 </div>
 
@@ -46,12 +46,12 @@ export function Perfil({avatarUrl, nome, localidade, descricao, formacao, instag
                 </div>
 
                 <div className={style.descricaoPerfil}>
-                    <p>{descricao}</p>
+                    <p>{bio}</p>
                 </div>
 
                 <div className={style.socialLinks}>
-                    {instagram && (
-                        <a href={instagram} target="_blank" rel="noreferrer"><img src={instagramLogo} alt="" />Instagram</a>
+                    {linkedin && (
+                        <a href={linkedin} target="_blank" rel="noreferrer"><img src={linkedinLogo} alt="" />Linkedin</a>
                     )}
                     {github && (
                         <a href={github} target="_blank" rel="noreferrer"><img src={githubLogo} alt="" />GitHub</a>

@@ -29,11 +29,11 @@ export function UserPerfil() {
                 {userData && <Perfil
                     avatarUrl={userData.imagem || "https://th.bing.com/th/id/OIP.QHSi98dVjDtsDGj38XdLYQAAAA?rs=1&pid=ImgDetMain"}
                     nome={userData.name}
-                    localidade="eu moro aqui boy"
-                    descricao={userData.bio||"🚀Estudante de Análise e Desenvolvimento de Sistemas buscando estágio para aplicar e expandir habilidades técnicas em desenvolvimento de software e contribuir para projetos inovadores."}
-                    formacao="Engenharia de Software - MIT"
-                    instagram="https://instagram.com/octocat"
-                    github="https://github.com/octocat"
+                    localidade={userData.localidade||"Xique-Xique, Bahia"}
+                    bio={userData.bio||"🚀Estudante de Análise e Desenvolvimento de Sistemas buscando estágio para aplicar e expandir habilidades técnicas em desenvolvimento de software e contribuir para projetos inovadores."}
+                    escolaridade={userData.escolaridade||"Unibra"}
+                    linkedin={userData.linkedin||"https://www.linkedin.com/in/goku-ultra-instinct-son-68805b304/"}
+                    github={userData.github||"https://github.com/octocat"}
                 />}
                 <PerfilAddPessoas />
             </div>
