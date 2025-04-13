@@ -13,13 +13,13 @@ export async function getPosts(): Promise<Post[]> {
                 id: 1,
                 autor: mockUser,
                 texto: "E ainda se vier noites traiçoeiras...",
-                data: "2 segundos atrás",
+                data: "2025-04-05 15:12:30.042049",
             },
             {
-                id: 1,
+                id: 2,
                 autor: mockUser,
                 texto: "Eu moro aqui boy",
-                data: "2 minutos atrás",
+                data: "2025-04-02 15:12:30.042049",
             },
         ];
     }
