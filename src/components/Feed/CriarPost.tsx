@@ -22,7 +22,7 @@ export function CriarPost() {
     }
 
     const form = new FormData()
-    form.append("conteudo", conteudo)
+    form.append("texto", conteudo)
     midias.forEach((midia, index)=>{
       form.append("midias", midia)
       index
