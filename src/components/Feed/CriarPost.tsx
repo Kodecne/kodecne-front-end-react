@@ -34,6 +34,7 @@ export function CriarPost() {
         }
       })
       toast.success("Post criado com sucesso!")
+      window.location.reload()
       setConteudo("");
       setMidias([]);
       setPreviewMidias([]);

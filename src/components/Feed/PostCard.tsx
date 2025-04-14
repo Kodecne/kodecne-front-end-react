@@ -42,13 +42,13 @@ export function PostCard({ post }: PostCardProps) {
 
       <p className={style.conteudo}>{post.texto}</p>
 
-      {/* {post.imagem && (
+      {post.midias[0] && (
         <img
-          src={post.imagem}
+          src={post.midias[0].arquivo}
           alt="Imagem do post"
           className={style.imagemPost}
         />
-      )} */}
+      )}
 
       <div className={style.acoesPost}>
         <button className={style.botaoAcao} onClick={toggleCurtir}>

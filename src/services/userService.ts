@@ -23,3 +23,13 @@ export async function fetchMe(): Promise<User | null>{
         return SO_FRONT ? mockUser : null
     }
 }
+export async function fetchPublicUser(id:string|number): Promise<User | null> {
+    try {
+        const response = await api.get<User>(`users/profile/${id}`)
+        return response.data
+    }
+    catch (error) {
+        console.log("Erro ao buscar dados do usuário:", error)
+        return SO_FRONT ? mockUser : null
+    }
+}
