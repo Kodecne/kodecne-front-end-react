@@ -23,6 +23,42 @@ export async function getPosts(): Promise<Post[]> {
                 data: "2025-04-02 15:12:30.042049",
                 midias:[]
             },
+            {
+                id: 3,
+                autor: mockUser,
+                texto: "Olha essa vista maravilhosa!",
+                data: "2025-04-10 18:45:00.000000",
+                midias: [
+                  {
+                    id: 1,
+                    tipo: "imagem",
+                    arquivo: "https://tse3.mm.bing.net/th?id=OIP.d_dr2EXx39-6WOlT2RDN-gHaEo&pid=Api" // certifique-se que esse arquivo está na pasta `public/img/`
+                  }
+                ]
+            },
+            {
+                id: 4,
+                autor: mockUser,
+                texto: "Final de semana épico com essa galera! 🏞️🔥",
+                data: "2025-04-13 20:10:00.000000",
+                midias: [
+                  {
+                    id: 1,
+                    tipo: "imagem",
+                    arquivo: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+                  },
+                  {
+                    id: 2,
+                    tipo: "video",
+                    arquivo: "https://www.w3schools.com/html/mov_bbb.mp4"
+                  },
+                  {
+                    id: 3,
+                    tipo: "imagem",
+                    arquivo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                  }
+                ]
+              },
         ];
     }
 }

@@ -1,0 +1,155 @@
+/* src/components/Feed/Style-PostModal.module.css */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: #fff;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    width: 600px;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+  
+  .closeBtn:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .closeBtn:active {
+    transform: scale(0.95);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  .mediaSection {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .mediaItem {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .commentsSection {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+  
+  .commentsSection ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .commentsSection li {
+    margin-bottom: 10px;
+  }
+  
+  .textSection {
+    color: #222;
+    text-align: center;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  
+
+
+  .likeSection {
+    margin: 12px 0;
+  }
+  
+  .likeBtn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .newCommentSection {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .textarea {
+    width: 100%;
+    height: 60px;
+    resize: none;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  
+  .sendCommentBtn {
+    align-self: flex-end;
+    padding: 6px 12px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sendCommentBtn:hover {
+    background-color: #222;
+  }
+  
+  .galeriaMidias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .imagemPost {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    cursor: pointer;
+  }

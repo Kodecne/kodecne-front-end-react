@@ -21,25 +21,25 @@ export function CriarPost() {
       return;
     }
 
-    const form = new FormData()
-    form.append("texto", conteudo)
-    midias.forEach((midia, index)=>{
-      form.append("midias", midia)
-      index
-    })
-    try{
-      api.post('/posts/', form, {
-        headers:{
-          "Content-Type":'multipart/form-data'
-        }
-      })
-      toast.success("Post criado com sucesso!")
-      window.location.reload()
+    const form = new FormData();
+    form.append("texto", conteudo);
+    midias.forEach((midia) => {
+      form.append("midias", midia); // Removido o `index`, já que não é necessário
+    });
+
+    try {
+      await api.post('/posts/', form, {
+        headers: {
+          "Content-Type": 'multipart/form-data',
+        },
+      });
+      toast.success("Post criado com sucesso!");
+      window.location.reload();
       setConteudo("");
       setMidias([]);
       setPreviewMidias([]);
-    }catch(error){
-      errorToastHandler(error)
+    } catch (error) {
+      errorToastHandler(error);
     }
   };
 
@@ -54,16 +54,16 @@ export function CriarPost() {
         placeholder="Compartilhe algo com a nossa comunidade..."
       />
 
-        <label className={style.inputFileLabel}>
+      <label className={style.inputFileLabel}>
         Selecionar mídias
         <input
-            type="file"
-            accept="image/*,video/*"
-            multiple
-            onChange={handleMidiaChange}
-            className={style.inputFile}
+          type="file"
+          accept="image/*,video/*"
+          multiple
+          onChange={handleMidiaChange}
+          className={style.inputFile}
         />
-        </label>
+      </label>
 
       {previewMidias.length > 0 && (
         <div className={style.previewContainer}>
@@ -77,8 +77,7 @@ export function CriarPost() {
                   preload="metadata"
                   playsInline
                 />
-                <div className={style.videoOverlay}>
-                </div>
+                <div className={style.videoOverlay}></div>
               </div>
             ) : (
               <img
