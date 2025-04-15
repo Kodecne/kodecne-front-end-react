@@ -88,9 +88,6 @@ export const PostModal: React.FC<PostModalProps> = ({
           <p>{content}</p>
         </div>
 
-        {/* Linha divisória logo abaixo do conteúdo */}
-        <hr className={style.divider} />
-
         {/* Botão de like movido para logo abaixo do post */}
         <div className={style.likeSection}>
           <button onClick={toggleCurtir} className={style.likeBtn}>
@@ -98,6 +95,9 @@ export const PostModal: React.FC<PostModalProps> = ({
             {curtido ? " Curtido" : " Curtir"}
           </button>
         </div>
+
+        {/* Linha divisória logo abaixo do conteúdo */}
+        <hr className={style.divider} />
 
         {/* Campo para novo comentário */}
         <div className={style.newCommentSection}>
