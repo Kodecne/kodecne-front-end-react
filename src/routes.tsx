@@ -8,6 +8,7 @@ import { LoginPage } from "./components/LoginPage/LoginPage.tsx";
 import { UserPerfil } from "./components/UserPerfil/UserPerfil.tsx";
 import SettingsPage from "./components/SettingsPage/SettingsPage.tsx"
 import { Feed } from "./components/Feed/Feed.tsx";
+import Trending from "./components/TrendingPosts/Trending.tsx"
 
 
 export function AppRoutes() {
@@ -18,7 +19,16 @@ export function AppRoutes() {
             <Route path="/login" element={<><Navbar/><LoginPage /><Footer/></>} />
             <Route path="/perfil" element={<><Navbar /><UserPerfil /></>} />
             <Route path="/settings" element={<><Navbar /><SettingsPage /><Footer/></>} />
-            <Route path="/feed" element={<><Navbar /><Feed /></>} />
+            <Route path="/feed" element={
+                <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+                    <Navbar />
+                    <div style={{ display: 'flex', justifyContent: 'center', flex: 1, gap: '50px' }}>
+                        <Feed />
+                        <Trending />
+                    </div>
+                </div>
+                }
+            />
         </Routes>
     );
 }
