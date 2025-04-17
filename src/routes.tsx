@@ -9,6 +9,7 @@ import { UserPerfil } from "./components/UserPerfil/UserPerfil.tsx";
 import SettingsPage from "./components/SettingsPage/SettingsPage.tsx"
 import { Feed } from "./components/Feed/Feed.tsx";
 import Trending from "./components/TrendingPosts/Trending.tsx"
+import { Conexoes } from "./components/TelaConexoes/Conexoes.tsx";
 
 
 export function AppRoutes() {
@@ -29,6 +30,7 @@ export function AppRoutes() {
                 </div>
                 }
             />
+            <Route path="/Conexoes" element={<><Navbar /><Conexoes /></>} />
         </Routes>
     );
 }

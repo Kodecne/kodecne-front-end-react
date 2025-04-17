@@ -1,0 +1,146 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100vh;
+  }
+  
+  .titulo {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .subtitulo {
+    margin-bottom: 1rem;
+  }
+  
+  .filtroLinha {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+  }
+  
+  .botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 1rem;
+  }
+  
+  .btnAzul {
+    background-color: #D0B9E9;
+    color: #222;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btnVerde {
+    background-color: #6A3696;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .resultados {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .resultadoTitulo {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .listaUsuarios {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 600px;
+  }
+  
+  .itemUsuario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .usuarioInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+  }
+  .infoUserText {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    word-break: break-word; /* quebra automaticamente se for muito longo */
+  }
+  
+  .tecnologias {
+    margin-left: 8px; /* leve recuo para a direita */
+    font-size: 0.9rem; /* texto um pouco menor */
+    color: #555; /* cor mais suave (opcional) */
+    width: 400px;
+  }
+  
+  
+  .imagemPerfil {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    object-fit: cover;
+  }
+  
+  .btnConectar {
+    background-color: #6A3696;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .paginacao {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .btnPaginacao {
+    background-color: #6b7280;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btnVoltar {
+    background-color: #6A3696;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
