@@ -6,6 +6,9 @@ import { FaRegThumbsUp, FaThumbsUp, FaRegComment, FaShare } from "react-icons/fa
 import { formatDistanceToNow, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { PostModal } from "./PostModal"; // Importação correta do PostModal
+import { useNavigate } from 'react-router-dom';
+import { curtirPost } from '../../services/postsService';
+
 
 type PostCardProps = {
   post: Post;
@@ -13,7 +16,13 @@ type PostCardProps = {
 
 export function PostCard({ post }: PostCardProps) {
   const [curtido, setCurtido] = useState(false);
+  const [curtidas, setCurtidas] = useState(0);
   const [modalAberto, setModalAberto] = useState(false);
+  const navigate = useNavigate()
+  const irParaPost = () => {
+
+    navigate(`/post/${post.id}`);
+  };
 
   const dataPublicacao = new Date(post.data);
   const agora = new Date();
@@ -27,11 +36,32 @@ export function PostCard({ post }: PostCardProps) {
       : format(dataPublicacao, "dd 'de' MMMM 'de' yyyy 'às' HH:mm", { locale: ptBR });
 
   const toggleCurtir = () => {
-    setCurtido((prev) => !prev);
-  };
+    async function curtir() {
+      if (!post) return;
+      try {
+        const response = await curtirPost(post.id.toString());
+        console.log(response)
+        console.log(response.data.likes);
+        
+        setCurtidas(response.data.likes);
 
-  const toggleModal = () => {
-    setModalAberto((prev) => !prev);
+        switch (response.status) {
+          case 201:
+            setCurtido(true)
+            break;
+
+          case 200:
+            setCurtido(false)
+            break
+
+          default:
+            break;
+        }
+      } catch (error) {
+        console.error("Erro ao curtir:", error);
+      }
+    }
+    curtir()
   };
 
   // Comentários fictícios (você pode trocar por post.comentarios depois)
@@ -69,7 +99,7 @@ export function PostCard({ post }: PostCardProps) {
         </div>
 
         {/* Exibindo o conteúdo do post */}
-        <p className={style.conteudo}>{post.texto}</p>
+        <p onClick={irParaPost} className={style.conteudo}>{post.texto}</p>
 
         {/* Verificando se o post possui mídias e exibindo a primeira imagem */}
         {post.midias.length > 0 && (
@@ -78,13 +108,13 @@ export function PostCard({ post }: PostCardProps) {
               src={post.midias[0].arquivo}
               alt="Imagem do post"
               className={style.imagemPost}
-              onClick={toggleModal}
+              onClick={irParaPost}
             />
           ) : (
             <video
               controls
               className={style.imagemPost}
-              onClick={toggleModal}
+              onClick={irParaPost}
               onPlay={(e) => e.stopPropagation()} // Evita conflito com onClick do modal
             >
               <source src={post.midias[0].arquivo} type="video/mp4" />
@@ -107,9 +137,10 @@ export function PostCard({ post }: PostCardProps) {
               </>
             )}
           </button>
+          <span>{curtidas} curtida{curtidas === 1 ? '' : 's'}</span>
 
           {/* Abrindo o modal de comentários */}
-          <button className={style.botaoAcao} onClick={toggleModal}>
+          <button className={style.botaoAcao} onClick={irParaPost}>
             <FaRegComment className={style.icone} />
             Comentar
           </button>

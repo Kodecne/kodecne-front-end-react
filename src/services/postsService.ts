@@ -62,3 +62,27 @@ export async function getPosts(): Promise<Post[]> {
         ];
     }
 }
+export async function getPost(id:string): Promise<Post> {
+  try {
+    const response = await api.get<Post>(`posts/${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao buscar usuários:", error);
+    return{
+        id: 1,
+        autor: mockUser,
+        texto: "E ainda se vier noites traiçoeiras...",
+        data: "2025-04-05 15:12:30.042049",
+        midias: []
+      }
+    ;
+  }
+}
+export async function curtirPost(id: string) {
+  try {
+    const res = await api.post(`posts/${id}/curtir/`);
+    return res; // Aqui já vem o JSON automaticamente
+  } catch (error) {
+    throw new Error(`Erro: ${error}`);
+  }
+}

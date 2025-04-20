@@ -1,0 +1,113 @@
+/* src/pages/PostPage.module.css */
+.postContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.fotoPerfil {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.data {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.conteudo {
+    font-size: 1rem;
+    color: #333;
+    margin: 12px 0;
+    white-space: pre-line;
+}
+.toggleMidias {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.toggleMidias button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggleMidias button:hover {
+    background-color: #e0e0e0;
+}
+.imagemPost {
+    width: 100%;
+    max-height: 400px;
+    object-fit:  contain    ;
+    border-radius: 10px;
+    margin-top: 12px;
+}
+.interacoes {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.botaoCurtir {
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.comentarios {
+    margin-top: 24px;
+}
+
+.comentarios ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+}
+
+.comentarios li {
+    background: #f4f4f4;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+}
+
+.formComentario {
+    display: flex;
+    gap: 8px;
+}
+
+.formComentario input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.formComentario button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

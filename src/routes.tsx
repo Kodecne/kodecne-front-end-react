@@ -10,6 +10,7 @@ import SettingsPage from "./components/SettingsPage/SettingsPage.tsx"
 import { Feed } from "./components/Feed/Feed.tsx";
 import Trending from "./components/TrendingPosts/Trending.tsx"
 import { Conexoes } from "./components/TelaConexoes/Conexoes.tsx";
+import { PostPage } from "./components/Post/PostPage.tsx";
 
 
 export function AppRoutes() {
@@ -30,6 +31,7 @@ export function AppRoutes() {
                 </div>
                 }
             />
+            <Route path="/post/:id" element={<PostPage />} />
             <Route path="/Conexoes" element={<><Navbar /><Conexoes /></>} />
         </Routes>
     );
