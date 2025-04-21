@@ -14,14 +14,20 @@ export async function getPosts(): Promise<Post[]> {
                 autor: mockUser,
                 texto: "E ainda se vier noites traiçoeiras...",
                 data: "2025-04-05 15:12:30.042049",
-                midias:[]
+                midias:[],
+                curtidas:0,
+                curtido_por_mim:false,
+                comentarios:[]
             },
             {
                 id: 2,
                 autor: mockUser,
                 texto: "Eu moro aqui boy",
                 data: "2025-04-02 15:12:30.042049",
-                midias:[]
+                midias:[],
+                curtidas:0,
+                curtido_por_mim:false,
+                comentarios:[]
             },
             {
                 id: 3,
@@ -34,7 +40,10 @@ export async function getPosts(): Promise<Post[]> {
                     tipo: "imagem",
                     arquivo: "https://tse3.mm.bing.net/th?id=OIP.d_dr2EXx39-6WOlT2RDN-gHaEo&pid=Api" // certifique-se que esse arquivo está na pasta `public/img/`
                   }
-                ]
+                ],
+                curtidas:0,
+                curtido_por_mim:false,
+                comentarios:[]
             },
             {
                 id: 4,
@@ -57,7 +66,10 @@ export async function getPosts(): Promise<Post[]> {
                     tipo: "imagem",
                     arquivo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
                   }
-                ]
+                ],
+                curtidas:0,
+                curtido_por_mim:false,
+                comentarios:[]
               },
         ];
     }
@@ -73,7 +85,10 @@ export async function getPost(id:string): Promise<Post> {
         autor: mockUser,
         texto: "E ainda se vier noites traiçoeiras...",
         data: "2025-04-05 15:12:30.042049",
-        midias: []
+        midias: [],
+        curtidas:0,
+        curtido_por_mim:false,
+        comentarios:[]
       }
     ;
   }

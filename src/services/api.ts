@@ -27,9 +27,31 @@ api.interceptors.request.use(
     }
 );
 
-export function errorToastHandler(error:any){
+api.interceptors.response.use(
+    response => response,
+    error => {
+        const status = error.response?.status;
+
+        // Evita redirecionamento se já está na página de login
+        const currentPath = window.location.pathname;
+        const isOnLoginPage = currentPath.includes("/login");
+
+        if ((status === 401 || status === 403) && !isOnLoginPage) {
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+
+            toast.error("Sessão expirada. Faça login novamente.");
+
+            window.location.href = "/login";
+        }
+
+        return Promise.reject(error);
+    }
+);
+// Função para exibir toasts de erro
+export function errorToastHandler(error: any) {
     if (error.response && error.response.data) {
-        const data = error.response.data
+        const data = error.response.data;
         if (typeof data === 'object') {
             const mensagens = Object.entries(data)
                 .map(([campo, msgs]) => `${campo}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
@@ -44,5 +66,6 @@ export function errorToastHandler(error:any){
         toast.error("Erro inesperado. Verifique sua conexão.");
     }
 }
+
 
 export default api;

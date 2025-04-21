@@ -29,6 +29,11 @@ export function Navbar() {
     const[userData, setUserData] = useState<User|null>(null);
     useEffect(() => {
         async function obterUsuario() {
+            const token = localStorage.getItem("accessToken");
+            if (!token) {
+                setUserData(null); // não está logado
+                return;
+            }
             const user = await fetchMe()
             setUserData(user)
         }

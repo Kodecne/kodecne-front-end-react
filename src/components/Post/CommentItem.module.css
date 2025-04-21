@@ -1,0 +1,32 @@
+.comentario {
+    display: flex;
+    gap: 10px;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.corpo {
+    flex: 1;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+p {
+    margin-top: 4px;
+    font-size: 0.95rem;
+    color: #333;
+}

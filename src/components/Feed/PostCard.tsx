@@ -15,8 +15,8 @@ type PostCardProps = {
 };
 
 export function PostCard({ post }: PostCardProps) {
-  const [curtido, setCurtido] = useState(false);
-  const [curtidas, setCurtidas] = useState(0);
+  const [curtido, setCurtido] = useState(post.curtido_por_mim);
+  const [curtidas, setCurtidas] = useState(post.curtidas);
   const [modalAberto, setModalAberto] = useState(false);
   const navigate = useNavigate()
   const irParaPost = () => {
@@ -34,6 +34,8 @@ export function PostCard({ post }: PostCardProps) {
     diferencaEmDias < 7
       ? formatDistanceToNow(dataPublicacao, { addSuffix: true, locale: ptBR })
       : format(dataPublicacao, "dd 'de' MMMM 'de' yyyy 'às' HH:mm", { locale: ptBR });
+
+  
 
   const toggleCurtir = () => {
     async function curtir() {

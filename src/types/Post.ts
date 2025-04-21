@@ -12,4 +12,13 @@ export interface Post {
   texto: string;
   data: string;
   midias: PostMidia[];
+  curtidas: number;
+  curtido_por_mim: boolean;
+  comentarios: Comentario[]
 }
+export interface Comentario {
+  id: number;
+  texto: string;
+  data: string;
+  usuario: User;
+};

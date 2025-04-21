@@ -32,7 +32,7 @@ export function AppRoutes() {
                 }
             />
             <Route path="/post/:id" element={<PostPage />} />
-            <Route path="/Conexoes" element={<><Navbar /><Conexoes /></>} />
+            <Route path="/conexoes" element={<><Navbar /><Conexoes /></>} />
         </Routes>
     );
 }

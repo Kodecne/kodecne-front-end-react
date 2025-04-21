@@ -1,14 +1,16 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import style from './PostPage.module.css';
-import { Post } from '../../types/Post';
+import { Comentario, Post } from '../../types/Post';
 import { getPost } from '../../services/postsService';
+import { CommentItem } from './CommentItem';
+import api from '../../services/api';
 
 export function PostPage() {
     const { id } = useParams();
     const [post, setPost] = useState<Post | null>(null);
     const [likes, setLikes] = useState(0);
-    const [comentarios, setComentarios] = useState<string[]>([]);
+    const [comentarios, setComentarios] = useState<Comentario[]>([]);
     const [mostrarMidias, setMostrarMidias] = useState(true);
     const [novoComentario, setNovoComentario] = useState('');
     const navigate = useNavigate();
@@ -22,8 +24,10 @@ export function PostPage() {
             const post_data = await getPost(id);
             console.log(post_data)
             setPost(post_data);
-            setLikes( 0); // Certifique-se de que o campo "likes" existe
-            setComentarios([]);
+            setLikes(0); // Certifique-se de que o campo "likes" existe
+            if(post){
+                setComentarios(post.comentarios);
+            }
         }
         obterDados();
     }, [id]);
@@ -35,11 +39,21 @@ export function PostPage() {
         // Aqui você pode futuramente enviar para API
     }
 
-    function enviarComentario() {
-        if (!novoComentario.trim()) return;
-        setComentarios(prev => [...prev, novoComentario.trim()]);
-        setNovoComentario('');
-        // Aqui também poderia salvar na API
+    async function APIenviarComentario(texto: string) {
+        const response = await api.post(`/posts/${id}/comentarios/`, { post:id, texto:novoComentario });
+        console.log(response);
+        
+        return response.data;
+    }
+    async function handleEnviarComentario() {
+        if (!novoComentario.trim() || !id) return;
+        try {
+            const novo = await APIenviarComentario(novoComentario.trim());
+            setComentarios(prev => [novo, ...prev]);
+            setNovoComentario('');
+        } catch (error) {
+            console.error("Erro ao enviar comentário:", error);
+        }
     }
 
     return (
@@ -86,26 +100,40 @@ export function PostPage() {
                 <button onClick={curtirPost} className={style.botaoCurtir}>Curtir</button>
                 <span>{likes} curtida{likes === 1 ? '' : 's'}</span>
             </div>
-
+            <form
+                className={style.formComentario}
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    handleEnviarComentario();
+                }}
+            >
+                <input
+                    type="text"
+                    placeholder="Escreva um comentário..."
+                    value={novoComentario}
+                    onChange={(e) => setNovoComentario(e.target.value)}
+                    aria-label="Campo para digitar um comentário"
+                />
+                <button
+                    type="submit"
+                    disabled={!novoComentario.trim()}
+                >
+                    Enviar
+                </button>
+            </form>
             {/* Comentários */}
-            <div className={style.comentarios}>
-                <h3>Comentários</h3>
-                <ul>
-                    {comentarios.map((comentario, index) => (
-                        <li key={index}>{comentario}</li>
-                    ))}
-                </ul>
-
-                <div className={style.formComentario}>
-                    <input
-                        type="text"
-                        placeholder="Escreva um comentário..."
-                        value={novoComentario}
-                        onChange={e => setNovoComentario(e.target.value)}
+            {post.comentarios.length > 0 ? (
+                post.comentarios.map((comentario) => (
+                    <CommentItem
+                        key={comentario.id}
+                        usuario={comentario.usuario}
+                        texto={comentario.texto}
+                        data={comentario.data}
                     />
-                    <button onClick={enviarComentario}>Enviar</button>
-                </div>
-            </div>
+                ))
+            ) : (
+                <p>Seja o primeiro a comentar!</p>
+            )}
         </div>
     );
 }
