@@ -5,7 +5,7 @@ import navLogo from '../../assets/images/logo kodecne.svg';
 import home from '../../assets/images/home.svg';
 import { Link } from "react-router-dom";
 import feed from '../../assets/images/feed.svg';
-import messages from '../../assets/images/messages.svg';
+import messages from '../../assets/images/messages.png';
 import notification from '../../assets/images/notifications.svg';
 import code from '../../assets/images/code.svg';
 import { useNavigate } from "react-router-dom";

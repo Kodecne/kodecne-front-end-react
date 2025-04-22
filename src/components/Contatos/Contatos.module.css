@@ -1,0 +1,8 @@
+.pessoas {
+    display: flex;
+    margin-top: 90px;
+    justify-content: center;
+}
+.pessoas img {
+    width: 700px;
+}
