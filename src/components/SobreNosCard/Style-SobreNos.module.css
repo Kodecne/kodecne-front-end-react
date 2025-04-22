@@ -10,12 +10,13 @@
     background-color: #AC68A9;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    padding-left: 150px;
 }
 .componentTitle h2 {
     margin-left: 20px;
 }
 .componentDescription {
-    padding: 0 3rem;
+    padding: 0 10rem;
     text-align: center;
     margin: 2rem 0;
 }

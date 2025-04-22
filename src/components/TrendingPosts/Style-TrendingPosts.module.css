@@ -50,6 +50,5 @@
     position: fixed;
     top: 90px;          /* Distância do topo da tela */
     right: 60px;         /* Distância da borda direita */
-    z-index: 1000; 
 }
 
