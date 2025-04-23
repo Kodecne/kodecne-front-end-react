@@ -65,11 +65,11 @@ export function Navbar() {
                         <img src={feed} alt="Feed" />
                         <p>Feed</p>
                     </Link>
-                    <Link to={""} className={style.item}>
+                    <Link to={"/contatos"} className={style.item}>
                         <img src={messages} alt="Mensagens" />
                         <p>Mensagens</p>
                     </Link>
-                    <Link to={""} className={style.item} >
+                    <Link to={"/notificacoes"} className={style.item} >
                         <img src={notification} alt="Notificações"/>
                         <p>Notificações</p>
                     </Link>

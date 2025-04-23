@@ -36,7 +36,7 @@ header nav div span {
 header nav div.searchContainer {
   display: flex;
   align-items: center;
-  border: 2px solid #222;
+  border: 1px solid #ccc;
   border-radius: 20px;
   width: 100%;
   max-width: 250px;

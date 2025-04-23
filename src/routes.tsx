@@ -12,7 +12,8 @@ import Trending from "./components/TrendingPosts/Trending.tsx"
 import { Conexoes } from "./components/TelaConexoes/Conexoes.tsx";
 import { PostPage } from "./components/Post/PostPage.tsx";
 import { Support } from "./components/Support/Support.tsx";
-import { Contatos } from "./components/Contatos/Contatos.tsx"
+import { ContactList } from "./components/ContactList/ContactList.tsx"
+import { NotificationList } from "./components/NotificationList/NotificationList.tsx";
 
 
 export function AppRoutes() {
@@ -36,7 +37,8 @@ export function AppRoutes() {
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/conexoes" element={<><Navbar /><Conexoes /></>} />
             <Route path="/support" element={<><Navbar /><Support /><Footer/></>} />
-            <Route path="/contatos" element={<><Navbar /><Contatos /></>} />
+            <Route path="/contatos" element={<><Navbar /><ContactList /></>} />
+            <Route path="/notificacoes" element={<><Navbar /><NotificationList /></>} />
 
         </Routes>
     );

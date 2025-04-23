@@ -1,0 +1,35 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 20px;
+  }
+  
+  .sectionTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #5e2ca5;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .notificationItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .text {
+    font-size: 14px;
+    color: #333;
+  }
+  
