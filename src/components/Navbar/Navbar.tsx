@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import feed from '../../assets/images/feed.svg';
 import messages from '../../assets/images/messages.png';
 import notification from '../../assets/images/notifications.svg';
-import code from '../../assets/images/code.svg';
 import { useNavigate } from "react-router-dom";
 import { User } from "../../types/User";
 import { fetchMe } from "../../services/userService";
@@ -73,10 +72,6 @@ export function Navbar() {
                     <Link to={""} className={style.item} >
                         <img src={notification} alt="Notificações"/>
                         <p>Notificações</p>
-                    </Link>
-                    <Link to={""} className={style.item} >
-                        <img src={code} alt="Code Together" />
-                        <p>Code Together</p>
                     </Link>
                 </div>
 
