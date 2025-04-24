@@ -1,7 +1,7 @@
 import api from "./api";
 import { mockUser, User } from "../types/User";
 
-const SO_FRONT = true
+const SO_FRONT = false
 
 // Função para buscar todos os usuários
 export async function getUsers(): Promise<User[]> {

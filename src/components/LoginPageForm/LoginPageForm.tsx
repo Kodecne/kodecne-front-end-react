@@ -10,10 +10,10 @@ interface LoginPageFormProps {
 
 const LoginPageForm: React.FC<LoginPageFormProps> = ({ onLogin, onRegister, onResetPassword, page=false }) => {
     const [view, setView] = useState<'login' | 'register' | 'reset'>(page ? 'register' : 'login');
-    const [username, setUsername] = useState('Lan');
-    const [email, setEmail] = useState('irlanferreiradasilva2@gmail.com');
-    const [password, setPassword] = useState('lanzinho123');
-    const [confirmPassword, setConfirmPassword] = useState('lanzinho123');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const renderForm = () => {
         switch (view) {

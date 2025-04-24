@@ -4,7 +4,7 @@ export interface User {
     email: string;
     telefone?: string;
     bio?: string;  // o ? significa que o campo é opcional major
-    imagem?: string;
+    imagem: string;
     genero?: string;
     data_nascimento?: string;
     escolaridade?: string;

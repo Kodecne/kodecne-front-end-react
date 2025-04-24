@@ -47,13 +47,13 @@ export function UserPerfil() {
             <div className={style.alignItems}>
                 {userData && <div>
                     <Perfil
-                        avatarUrl={userData.imagem || "https://th.bing.com/th/id/OIP.QHSi98dVjDtsDGj38XdLYQAAAA?rs=1&pid=ImgDetMain"}
+                        avatarUrl={userData.imagem}
                         nome={userData.name}
-                        localidade={userData.localidade||"Xique-Xique, Bahia"}
-                        bio={userData.bio||"🚀Estudante de Análise e Desenvolvimento de Sistemas buscando estágio para aplicar e expandir habilidades técnicas em desenvolvimento de software e contribuir para projetos inovadores."}
-                        escolaridade={userData.escolaridade||"Unibra"}
-                        linkedin={userData.linkedin||"https://www.linkedin.com/in/goku-ultra-instinct-son-68805b304/"}
-                        github={userData.github||"https://github.com/octocat"}
+                        localidade={userData.localidade}
+                        bio={userData.bio}
+                        escolaridade={userData.escolaridade}
+                        linkedin={userData.linkedin}
+                        github={userData.github}
                     />
                     {posts.map((post) => (
                             <PostCard key={post.id} post={post} />
