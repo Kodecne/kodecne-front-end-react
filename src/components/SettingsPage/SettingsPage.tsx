@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import style from "./Style-SettingsPage.module.css";
 import api, {errorToastHandler} from '../../services/api';
 import { toast } from 'react-toastify';
+import ImageCropper from './ImageCropper';
+import UniversityAutocomplete from './UniversityAutocomplete';
+
 
 type SectionProps = {
   title: string;
@@ -38,6 +41,25 @@ const InputField = ({ label, name, value, onChange, type = "text" }: InputFieldP
     />
   </div>
 );
+type SelectFieldProps = {
+  label: string;
+  name: string;
+  value: string;
+  options: string[];
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+};
+
+const SelectField = ({ label, name, value, options, onChange }: SelectFieldProps) => (
+  <div className={style.inputContainer}>
+    <label htmlFor={name} className={style.label}>{label}</label>
+    <select id={name} name={name} value={value} onChange={onChange} className={style.inputField}>
+      <option value="">Selecione</option>
+      {options.map((option) => (
+        <option key={option} value={option}>{option}</option>
+      ))}
+    </select>
+  </div>
+);
 
 const SettingsPage = () => {
   const [formData, setFormData] = useState({
@@ -45,7 +67,6 @@ const SettingsPage = () => {
     bio: '',
     email: '',
     telefone: '',
-    endereco: '',
     escolaridade: '',
     genero: '',
     data_nascimento: '',
@@ -59,6 +80,9 @@ const SettingsPage = () => {
   const [emailCode, setEmailCode] = useState('');
   const [emailCodeSent, setEmailCodeSent] = useState(false);
   const [generatedCode, setGeneratedCode] = useState('');
+  const [showCropper, setShowCropper] = useState(false);
+  const [rawImage, setRawImage] = useState<string | null>(null);
+
 
   useEffect(()=>{
     async function obterUsuario(){
@@ -71,7 +95,6 @@ const SettingsPage = () => {
             bio: user.bio || '',
             email: user.email || '',
             telefone: user.telefone || '',
-            endereco: user.localidade || '',
             escolaridade: user.escolaridade || '',
             genero: user.genero || '',
             data_nascimento: user.data_nascimento || '',
@@ -153,19 +176,49 @@ const SettingsPage = () => {
         <InputField label="Nome" name="name" value={formData.name} onChange={handleChange} />
         <div className={style.inputContainer}>
           <label htmlFor="imagem" className={style.label}>Imagem de Perfil</label>
-          <input id="imagem" name="imagem" className={style.inputField} type="file" accept="image/*"
-          onChange={(e) => {
-            if (e.target.files) {
-              setProfileImage(e.target.files[0]);
-            }
-          }}
+          <input
+            id="imagem"
+            name="imagem"
+            className={style.inputField}
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.readAsDataURL(e.target.files[0]);
+                reader.onload = () => {
+                  if (reader.result) {
+                    setRawImage(reader.result as string);
+                    setShowCropper(true);
+                  }
+                };
+              }
+            }}
           />
+          {showCropper && rawImage && (
+            <ImageCropper
+              image={rawImage}
+              onCropComplete={(blob) => setProfileImage(new File([blob], 'cropped.jpg', { type: 'image/jpeg' }))}
+              onClose={() => setShowCropper(false)}
+            />
+          )}
+
+
         </div>
         <InputField label="Bio" name="bio" value={formData.bio} onChange={handleChange} />
         <InputField label="Telefone" name="telefone" value={formData.telefone} onChange={handleChange} />
-        <InputField label="Endereço" name="endereco" value={formData.endereco} onChange={handleChange} />
-        <InputField label="Escolaridade" name="escolaridade" value={formData.escolaridade} onChange={handleChange} />
-        <InputField label="Gênero" name="genero" value={formData.genero} onChange={handleChange} />
+        <UniversityAutocomplete
+          value={formData.escolaridade}
+          onChange={(value) => setFormData((prev) => ({ ...prev, escolaridade: value }))}
+        />
+        <SelectField
+          label="Gênero"
+          name="genero"
+          value={formData.genero}
+          onChange={(e) => setFormData((prev) => ({ ...prev, genero: e.target.value }))}
+          options={['Masculino', 'Feminino', 'Outro']}
+        />
+
         <InputField label="Data de nascimento" type="date" name="data_nascimento" value={formData.data_nascimento} onChange={handleChange} />
       </Section>
 
