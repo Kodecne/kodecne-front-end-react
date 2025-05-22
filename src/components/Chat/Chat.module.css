@@ -140,3 +140,54 @@
 .messageForm button:hover {
     background: #5a2b86;
 }
+
+.userItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.userItem:hover {
+    background-color: #e8e8e8;
+}
+
+.userAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+.userItemInfo {
+    flex: 1;
+}
+
+.userItemInfo h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.userItemInfo p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.unreadBadge {
+    background-color: #6A3696;
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
+}

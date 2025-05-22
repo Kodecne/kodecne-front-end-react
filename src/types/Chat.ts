@@ -12,4 +12,4 @@ export interface Conversation {
     user: User;
     lastMessage: ChatMessage;
     unreadCount?: number;
-  }
+}

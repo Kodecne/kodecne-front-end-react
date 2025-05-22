@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { chatService } from '../../services/chatService';
-import { ChatMessage } from '../../types/Chat';
-import {User} from '../../types/User';
+import { ChatMessage, Conversation } from '../../types/Chat';
+import { User } from '../../types/User';
 import style from './Chat.module.css';
 
 interface ChatProps {
@@ -12,6 +12,7 @@ interface ChatProps {
 export function Chat({ otherUserId, otherUser }: ChatProps) {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [newMessage, setNewMessage] = useState('');
+    const [conversations, setConversations] = useState<Conversation[]>([]);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -46,6 +47,15 @@ export function Chat({ otherUserId, otherUser }: ChatProps) {
         }
     };
 
+    useEffect(() => {
+        const fetchConversations = async () => {
+            const userConversations = await chatService.getConversations();
+            setConversations(userConversations);
+        };
+
+        fetchConversations();
+    }, []);
+
     return (
         <div className={style.chatLayout}>
             <div className={style.conversasList}>
@@ -54,7 +64,24 @@ export function Chat({ otherUserId, otherUser }: ChatProps) {
                     <input type="text" placeholder="Pesquisar..." />
                 </div>
                 <div className={style.userList}>
-                    {/* Lista de usuários */}
+                    {conversations.map((conversation) => (
+                        <div key={conversation.user.id} className={style.userItem}>
+                            <img 
+                                src={conversation.user.imagem} 
+                                alt={conversation.user.name} 
+                                className={style.userAvatar}
+                            />
+                            <div className={style.userItemInfo}>
+                                <h4>{conversation.user.name}</h4>
+                                <p>{conversation.lastMessage.content}</p>
+                            </div>
+                            {conversation.unreadCount ? (
+                                <span className={style.unreadBadge}>
+                                    {conversation.unreadCount}
+                                </span>
+                            ) : null}
+                        </div>
+                    ))}
                 </div>
             </div>
 

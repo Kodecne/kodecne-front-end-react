@@ -1,5 +1,5 @@
 import api from "./api";
-import { ChatMessage } from "../types/Chat";
+import { ChatMessage, Conversation } from "../types/Chat";
 
 export const chatService = {
     async getMessages(userId: number): Promise<ChatMessage[]> {
@@ -18,5 +18,10 @@ export const chatService = {
     async getUnreadCount(): Promise<number> {
         const response = await api.get('/chat/unread/');
         return response.data.unread_count;
+    },
+
+    async getConversations(): Promise<Conversation[]> {
+        const response = await api.get('/chat/conversations');
+        return response.data;
     }
 };
