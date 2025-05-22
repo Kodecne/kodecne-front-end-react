@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react';
 import style from './Style-SettingsPage.module.css';
 import universidades from './universidades.json'; // ajuste o caminho se necessário
 
-type Universidade = {
-    nome: string;
-    sigla: string;
-    uf: string;
-};
-
 type Props = {
     value: string;
     onChange: (value: string) => void;

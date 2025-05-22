@@ -14,6 +14,7 @@ import { PostPage } from "./components/Post/PostPage.tsx";
 import { Support } from "./components/Support/Support.tsx";
 import { ContactList } from "./components/ContactList/ContactList.tsx"
 import { NotificationList } from "./components/NotificationList/NotificationList.tsx";
+import { ChatPage } from "./components/Chat/ChatPage.tsx";
 
 
 export function AppRoutes() {
@@ -39,7 +40,7 @@ export function AppRoutes() {
             <Route path="/support" element={<><Navbar /><Support /><Footer/></>} />
             <Route path="/contatos" element={<><Navbar /><ContactList /></>} />
             <Route path="/notificacoes" element={<><Navbar /><NotificationList /></>} />
-
+            <Route path="/chat/:userId" element={<><Navbar/><ChatPage /></>} />
         </Routes>
     );
 }
