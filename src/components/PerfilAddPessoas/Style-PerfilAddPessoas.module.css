@@ -1,62 +1,89 @@
-.leftPerfilAddPessoas {
-    width: 20%;
-    height: auto;
-}
-.textTitle {
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-}
-.pessoasList {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-}
 .pessoaCard {
-    background-color: #E3D0F9;
-    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+  
+  .infoPessoa {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .fotoPerfil {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+  .nomeDescricaoContainer {
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-}
-.infoPessoa {
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    padding-top: 10px;
-    gap: 10px;
-    font-size: 18px;
-}
-.fotoPerfil {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-}
-.botaoSeguir {
-    margin: 8px 0;
-    margin-left: 10%;
-    width: 80%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-
-    padding: 3px 14px;
-    padding-right: 18px;
-    font-weight: bold;
-    border: 1px solid gray;
+    margin-left: 10px;
+    overflow: hidden;
+  }
+  
+  .nomePessoa {
+    font-weight: 600;
+    font-size: 14px;
+    color: #111;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+  
+  .descricaoPessoa {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+  
+  /* BOTÃO DE SEGUIR COM ESTILO ROXO */
+  .botaoSeguir {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #fff;
+    color: #6b21a8; /* Roxo forte */
+    border: 1px solid #333;
+    padding: 6px 12px;
     border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    white-space: nowrap; /* impede quebra de linha no texto */
-}
-.botaoSeguir img {
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-}
-.botaoSeguir:hover {
-    background-color: #CBC0C0;
-}
+    transition: all 0.2s ease;
+  }
+  
+  .botaoSeguir:hover {
+    background-color: #f3e8ff; /* Roxo clarinho ao passar o mouse */
+  }
+  
+  .botaoSeguir img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0); /* Deixa o ícone preto */
+  }
+
+  .textTitle {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px;
+    font-weight: 600;
+    color: #333;
+  }
+  
