@@ -4,6 +4,7 @@ import { ChatMessage, Conversation } from '../../types/Chat';
 import { User } from '../../types/User';
 import style from './Chat.module.css';
 import { Link } from 'react-router-dom';
+import { errorToastHandler } from '../../services/api';
 
 interface ChatProps {
     otherUserId: number;
@@ -14,7 +15,9 @@ export function Chat({ otherUserId, otherUser }: ChatProps) {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [newMessage, setNewMessage] = useState('');
     const [conversations, setConversations] = useState<Conversation[]>([]);
+    const [selectedImages, setSelectedImages] = useState<File[]>([]);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     // Função para buscar tanto mensagens quanto conversas
     const fetchData = async () => {
@@ -66,15 +69,47 @@ export function Chat({ otherUserId, otherUser }: ChatProps) {
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!newMessage.trim()) return;
+        if (!newMessage.trim() && selectedImages.length === 0) return;
 
         try {
-            const sentMessage = await chatService.sendMessage(otherUserId, newMessage);
-            setMessages([...messages, sentMessage]);
+            const formData = new FormData();
+            formData.append('receiver_id', otherUserId.toString());
+
+            if (newMessage.trim()) {
+                formData.append('content', newMessage.trim());
+            }
+
+            if (selectedImages.length > 0) {
+                selectedImages.forEach((image) => {
+                    formData.append('images', image);
+                });
+            }
+
+            // Log para debug
+            console.log('FormData contents:');
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+
+            const sentMessage = await chatService.sendMessage(formData);
+            setMessages(prev => [...prev, sentMessage]);
             setNewMessage('');
+            setSelectedImages([]);
         } catch (error) {
             console.error('Erro ao enviar mensagem:', error);
+            errorToastHandler(error);
         }
+    };
+
+    const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            const filesArray = Array.from(e.target.files);
+            setSelectedImages(prev => [...prev, ...filesArray]);
+        }
+    };
+
+    const removeImage = (index: number) => {
+        setSelectedImages(prev => prev.filter((_, i) => i !== index));
     };
 
     return (
@@ -122,7 +157,14 @@ export function Chat({ otherUserId, otherUser }: ChatProps) {
                                 className={`${style.message} ${message.sender.id === otherUserId ? style.received : style.sent
                                     }`}
                             >
-                                <p>{message.content}</p>
+                                {message.content && <p>{message.content}</p>}
+                                {message.images && message.images.length > 0 && (
+                                    <div className={style.imageGallery}>
+                                        {message.images.map((image, index) => (
+                                            <img key={index} src={image} alt={`Imagem ${index + 1}`} />
+                                        ))}
+                                    </div>
+                                )}
                                 <span className={style.timestamp}>
                                     {new Date(message.timestamp).toLocaleTimeString()}
                                 </span>
@@ -138,8 +180,29 @@ export function Chat({ otherUserId, otherUser }: ChatProps) {
                             onChange={(e) => setNewMessage(e.target.value)}
                             placeholder="Digite sua mensagem..."
                         />
+                        <input
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            ref={fileInputRef}
+                            onChange={handleImageSelect}
+                            style={{ display: 'none' }}
+                        />
+                        <button type="button" onClick={() => fileInputRef.current?.click()} className={style.imageButton}>
+                            <img src="/image-icon.svg" alt="Enviar imagens" />
+                        </button>
                         <button type="submit">Enviar</button>
                     </form>
+                    {selectedImages.length > 0 && (
+                        <div className={style.selectedImages}>
+                            {selectedImages.map((image, index) => (
+                                <div key={index} className={style.imagePreview}>
+                                    <img src={URL.createObjectURL(image)} alt={`Preview ${index}`} />
+                                    <button onClick={() => removeImage(index)}>×</button>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             ) : (
                 <div className={`${style.chatContainer} ${style.emptyChat}`}>

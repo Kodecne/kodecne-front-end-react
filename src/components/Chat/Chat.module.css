@@ -113,12 +113,32 @@
     text-align: left;
 }
 
+.message img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.imageButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.imageButton img {
+    width: 24px;
+    height: 24px;
+}
+
 .messageForm {
     display: flex;
     gap: 10px;
     padding: 15px;
     border-top: 1px solid #e0e0e0;
     background: #fff;
+    align-items: center;
 }
 
 .messageForm input {
@@ -209,4 +229,56 @@
 .emptyChatMessage h3 {
     font-size: 1.5rem;
     font-weight: 500;
+}
+
+.selectedImages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+    background: #fff;
+}
+
+.imagePreview {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.imagePreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.imagePreview button {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.message .imageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 5px 0;
+}
+
+.message .imageGallery img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
 }

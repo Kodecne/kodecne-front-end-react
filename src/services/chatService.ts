@@ -1,4 +1,4 @@
-import api from "./api";
+import api, { errorToastHandler } from "./api";
 import { ChatMessage, Conversation } from "../types/Chat";
 
 export const chatService = {
@@ -7,12 +7,18 @@ export const chatService = {
         return response.data;
     },
 
-    async sendMessage(receiverId: number, content: string): Promise<ChatMessage> {
-        const response = await api.post('/chat/messages/', {
-            receiver_id: receiverId,
-            content: content
-        });
-        return response.data;
+    async sendMessage(formData: FormData): Promise<ChatMessage> {
+        try {
+            const response = await api.post('/chat/messages/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            return response.data;
+        } catch (error) {
+            errorToastHandler(error);
+            throw error;
+        }
     },
 
     async getUnreadCount(): Promise<number> {
@@ -22,7 +28,6 @@ export const chatService = {
 
     async getConversations(): Promise<Conversation[]> {
         const response = await api.get('/chat/conversations');
-        console.log(response.data.lastMessage);
 
         return response.data;
     },
