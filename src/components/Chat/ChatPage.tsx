@@ -13,6 +13,8 @@ export function ChatPage() {
             if (userId) {
                 const response = await api.get(`/users/profile/${userId}`);
                 setOtherUser(response.data);
+            } else {
+                setOtherUser(null);
             }
         };
         fetchUser();
@@ -25,12 +27,10 @@ export function ChatPage() {
                 justifyContent: 'center',
                 padding: '2rem'
             }}>
-                {otherUser && (
-                    <Chat
-                        otherUserId={Number(userId)}
-                        otherUser={otherUser}
-                    />
-                )}
+                <Chat
+                    otherUserId={userId ? Number(userId) : 0}
+                    otherUser={otherUser}
+                />
             </div>
         </div>
     );

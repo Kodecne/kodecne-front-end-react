@@ -10,6 +10,6 @@ export interface ChatMessage {
 }
 export interface Conversation {
     user: User;
-    lastMessage: ChatMessage;
-    unreadCount?: number;
+    last_message: ChatMessage;
+    unread_count?: number;
 }

@@ -65,7 +65,7 @@ export function Navbar() {
                         <img src={feed} alt="Feed" />
                         <p>Feed</p>
                     </Link>
-                    <Link to={"/contatos"} className={style.item}>
+                    <Link to={"/chat"} className={style.item}>
                         <img src={messages} alt="Mensagens" />
                         <p>Mensagens</p>
                     </Link>

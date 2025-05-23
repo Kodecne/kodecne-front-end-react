@@ -22,9 +22,9 @@ export function AppRoutes() {
         <Routes>
             <Route path="/" element={<><Navbar /><HomePage /><Footer /></>} />
             <Route path="/sobrenos" element={<><Navbar /><SobreNos /><Footer /></>} />
-            <Route path="/login" element={<><Navbar/><LoginPage /><Footer/></>} />
+            <Route path="/login" element={<><Navbar /><LoginPage /><Footer /></>} />
             <Route path="/perfil" element={<><Navbar /><UserPerfil /></>} />
-            <Route path="/settings" element={<><Navbar /><SettingsPage /><Footer/></>} />
+            <Route path="/settings" element={<><Navbar /><SettingsPage /><Footer /></>} />
             <Route path="/feed" element={
                 <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
                     <Navbar />
@@ -33,14 +33,15 @@ export function AppRoutes() {
                         <Trending />
                     </div>
                 </div>
-                }
+            }
             />
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/conexoes" element={<><Navbar /><Conexoes /></>} />
-            <Route path="/support" element={<><Navbar /><Support /><Footer/></>} />
+            <Route path="/support" element={<><Navbar /><Support /><Footer /></>} />
             <Route path="/contatos" element={<><Navbar /><ContactList /></>} />
             <Route path="/notificacoes" element={<><Navbar /><NotificationList /></>} />
-            <Route path="/chat/:userId" element={<><Navbar/><ChatPage /></>} />
+            <Route path="/chat" element={<><Navbar /><ChatPage /></>} />
+            <Route path="/chat/:userId" element={<><Navbar /><ChatPage /></>} />
         </Routes>
     );
 }

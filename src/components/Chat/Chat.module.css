@@ -86,14 +86,16 @@
 }
 
 .sent {
-    margin-left: auto; /* Alinha à direita */
+    margin-left: auto;
+    /* Alinha à direita */
     background: #E3D0F9;
     color: rgb(37, 37, 37);
     border-bottom-right-radius: 5px;
 }
 
 .received {
-    margin-right: auto; /* Alinha à esquerda */
+    margin-right: auto;
+    /* Alinha à esquerda */
     background: #F0F0F0;
     color: #333;
     border-bottom-left-radius: 5px;
@@ -190,4 +192,21 @@
     border-radius: 10px;
     min-width: 20px;
     text-align: center;
+}
+
+.emptyChat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+}
+
+.emptyChatMessage {
+    text-align: center;
+    color: #666;
+}
+
+.emptyChatMessage h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
 }

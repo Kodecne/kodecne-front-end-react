@@ -4,6 +4,10 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 body {
     color: rgb(0, 0, 0);
 }

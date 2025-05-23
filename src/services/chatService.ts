@@ -22,6 +22,14 @@ export const chatService = {
 
     async getConversations(): Promise<Conversation[]> {
         const response = await api.get('/chat/conversations');
+        console.log(response.data.lastMessage);
+
         return response.data;
-    }
+    },
+
+    async markMessagesAsRead(userId: number): Promise<void> {
+        await api.post(`/chat/messages/read/`, {
+            sender_id: userId
+        });
+    },
 };
