@@ -1,31 +1,24 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChevronDownIcon } from "lucide-react";
 import style from './Style-Navbar.module.css';
 import navLogo from '../../assets/images/logo kodecne.svg';
 import home from '../../assets/images/home.svg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import feed from '../../assets/images/feed.svg';
 import messages from '../../assets/images/messages.png';
 import notification from '../../assets/images/notifications.svg';
-import { useNavigate } from "react-router-dom";
 import { User } from "../../types/User";
 import { fetchMe } from "../../services/userService";
+import api from "../../services/api";
 
 export function Navbar() {
+    const [query, setQuery] = useState("");
+    const [results, setResults] = useState<any[]>([]);
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-
-    const handleMouseEnter = () => setIsDropdownVisible(true);
-    const handleMouseLeave = () => setIsDropdownVisible(false);
-
+    const [searchType, setSearchType] = useState("user"); // Tipo de pesquisa
+    const [userData, setUserData] = useState<User|null>(null);
     const navigate = useNavigate()
-    
-    function handleLogout(){
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-        navigate('/login')
-    }
 
-    const[userData, setUserData] = useState<User|null>(null);
     useEffect(() => {
         async function obterUsuario() {
             const token = localStorage.getItem("accessToken");
@@ -39,6 +32,53 @@ export function Navbar() {
         obterUsuario()
     }, [])
 
+    useEffect(() => {
+        const fetchResults = async () => {
+            if (query.length < 2) {
+                setResults([]);
+                setIsDropdownVisible(false);
+                return;
+            }
+
+            try {
+                const response = await api.get(`/buscar/search/`, {
+                    params: { query, type: searchType },
+                });
+                setResults(response.data[searchType + "s"]); // Exemplo: "users", "tecnologias", "posts"
+                setIsDropdownVisible(true);
+            } catch (error) {
+                console.error("Erro ao buscar resultados:", error);
+            }
+        };
+
+        fetchResults();
+    }, [query, searchType]);
+
+    function handleLogout(){
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        navigate('/login')
+    }
+
+    const handleNavigate = (type: string, id: string) => {
+        if (type === "user") navigate(`/profile/${id}`);
+        if (type === "tecnologia") navigate(`/tecnologia/${id}`);
+        if (type === "post") navigate(`/post/${id}`);
+    };
+
+    const handleMouseEnter = () => setIsDropdownVisible(true);
+    const handleMouseLeave = () => setIsDropdownVisible(false);
+
+    const handleResultClick = (result: any) => {
+        if (searchType === "user") {
+            navigate(`/perfil/${result.id}`);
+        } else if (searchType === "tecnologia") {
+            navigate(`/tecnologias/${result.id}`);
+        } else if (searchType === "post") {
+            navigate(`/post/${result.id}`);
+        }
+    };
+
     return (
     <header>
         <nav>
@@ -49,10 +89,44 @@ export function Navbar() {
                     </Link>
                 </div>
 
-                {userData&&(<div className={style.searchContainer}>
+                {userData && (
+                  <div className={style.searchContainer}>
                     <span className={style.materialSymbolsOutlined}>search</span>
-                    <input type="text" placeholder="Pesquisar..." />
-                </div>)}
+                    <input
+                      type="text"
+                      placeholder="Pesquisar..."
+                      value={query}
+                      onChange={e => {
+                        setQuery(e.target.value);
+                        setIsDropdownVisible(e.target.value.length > 0);
+                      }}
+                      onFocus={() => setIsDropdownVisible(query.length > 0)}
+                      onBlur={() => setTimeout(() => setIsDropdownVisible(false), 150)}
+                    />
+                    {isDropdownVisible && query.length > 0 && (
+                      <ul className={style.dropdown}>
+                        <li
+                          className={style.dropdownItem}
+                          onMouseDown={() => navigate(`/pesquisa?query=${encodeURIComponent(query)}&type=user`)}
+                        >
+                          Pesquisar <b>{query}</b> Usuário
+                        </li>
+                        <li
+                          className={style.dropdownItem}
+                          onMouseDown={() => navigate(`/pesquisa?query=${encodeURIComponent(query)}&type=post`)}
+                        >
+                          Pesquisar <b>{query}</b> Post
+                        </li>
+                        <li
+                          className={style.dropdownItem}
+                          onMouseDown={() => navigate(`/pesquisa?query=${encodeURIComponent(query)}&type=tecnologia`)}
+                        >
+                          Pesquisar <b>{query}</b> Tecnologia
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+                )}
             </div>
             
             <div className={style.rightItems}>

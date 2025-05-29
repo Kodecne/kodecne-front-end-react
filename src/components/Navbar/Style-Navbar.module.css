@@ -1,4 +1,4 @@
-header {
+zzheader {
   position: fixed; /* Fixa o header na tela */
   top: 0;          /* Alinha o header ao topo da tela */
   left: 0;         /* Garante que o header comece da borda esquerda */
@@ -34,12 +34,13 @@ header nav div span {
 }
 
 header nav div.searchContainer {
+  position: relative;
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 20px;
   width: 100%;
-  max-width: 250px;
+  max-width: 300px;
   margin-left: 40px;
 }
 
@@ -50,6 +51,9 @@ header nav div.searchContainer input {
   padding: 8px 10px;
   border-radius: 20px;
   flex-grow: 1;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
 }
 
 header nav div.navItems {
@@ -150,4 +154,55 @@ header nav div a p {
 .rightItems {
   display: flex;
   align-items: center; /* Alinha os itens da direita verticalmente */
+}
+
+.searchTypeSelector {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdownItem {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dropdownItem:hover {
+    background-color: #f0f0f0;
+}
+
+.noResults {
+    padding: 10px;
+    color: #888;
+    text-align: center;
+}
+
+.resultType {
+    font-size: 12px;
+    color: #888;
+    margin-right: 10px;
+}
+
+.resultName {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
 }
