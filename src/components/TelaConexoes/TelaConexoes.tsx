@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './TelaConexoes.module.css';
+import { CompassLoader } from './CompassLoader';
 
 const tecnologiasDisponiveis = ['Python', 'Java', 'C++', 'JavaScript', 'Go'];
 const niveis = ['Qualquer experiência', 'Junior', 'Pleno', 'Senior'];
@@ -19,6 +20,7 @@ export function TelaConexoes({ usuariosDisponiveis }: TelaConexoesProps) {
   const [exibindoResultados, setExibindoResultados] = useState(false);
   const [resultados, setResultados] = useState<ResultadoUsuario[]>([]);
   const [pagina, setPagina] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const adicionarFiltro = () => {
     setFiltros([...filtros, { tecnologia: '', nivel: 'Qualquer experiência' }]);
@@ -31,7 +33,10 @@ export function TelaConexoes({ usuariosDisponiveis }: TelaConexoesProps) {
   };
 
   const pesquisar = () => {
-    const resultadosFiltrados = usuariosDisponiveis.filter((usuario) =>
+    setIsLoading(true);
+    // Simula um tempo de espera para a busca
+    setTimeout(() => {
+      const resultadosFiltrados = usuariosDisponiveis.filter((usuario) =>
       filtros.every((filtro) => {
         if (!filtro.tecnologia) return true;
         return usuario.tecnologias.some((tec) => {
@@ -45,9 +50,11 @@ export function TelaConexoes({ usuariosDisponiveis }: TelaConexoesProps) {
       })
     );
 
-    setResultados(resultadosFiltrados);
-    setPagina(0);
-    setExibindoResultados(true);
+      setResultados(resultadosFiltrados);
+      setPagina(0);
+      setExibindoResultados(true);
+      setIsLoading(false);
+    }, 1500); // Tempo de espera de 1.5 segundos
   };
 
   const voltar = () => {
@@ -71,7 +78,9 @@ export function TelaConexoes({ usuariosDisponiveis }: TelaConexoesProps) {
 
   return (
     <div className={styles.container}>
-      {!exibindoResultados ? (
+      {isLoading ? (
+        <CompassLoader />
+      ) : !exibindoResultados ? (
         <>
           <h2 className={styles.titulo}>Crie conexões diretas!</h2>
           <p className={styles.subtitulo}>Encontre pessoas mais experientes ou semelhantes a você.</p>

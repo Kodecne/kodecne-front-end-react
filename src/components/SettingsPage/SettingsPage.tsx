@@ -88,7 +88,7 @@ const SettingsPage = () => {
     async function obterUsuario(){
         const user = await fetchMe()
         if (user == null){
-            navigate('/login')
+            navigate('/auth')
         }else{
           setFormData({
             name: user.name || '',

@@ -25,7 +25,7 @@ export function UserPerfil() {
             if(user_id === null){
                 user = await fetchMe()
                 if(user === null){
-                    navigate('/login')
+                    navigate('/auth')
                     return
                 }
             }else{
