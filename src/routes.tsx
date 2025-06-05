@@ -15,7 +15,7 @@ import { Support } from "./components/Support/Support.tsx";
 import { ContactList } from "./components/ContactList/ContactList.tsx"
 import { NotificationList } from "./components/NotificationList/NotificationList.tsx";
 import { ChatPage } from "./components/Chat/ChatPage.tsx";
-
+import { Pesquisa } from "./components/Pesquisa/Pesquisa";
 
 export function AppRoutes() {
     return (
@@ -35,6 +35,7 @@ export function AppRoutes() {
                 </div>
             }
             />
+            <Route path="/pesquisa" element={<><Navbar /><Pesquisa /><Footer /></>} />
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/conexoes" element={<><Navbar /><Conexoes /></>} />
             <Route path="/support" element={<><Navbar /><Support /><Footer /></>} />

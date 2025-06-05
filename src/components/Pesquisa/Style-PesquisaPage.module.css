@@ -1,0 +1,96 @@
+.HomePage01 {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.leftPart {
+    width: 20%;
+    height: auto;
+    margin-left: 200px;
+}
+.leftPart img {
+    width: 100%;
+    height: auto;
+}
+.rightPart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    margin-right: 200px;
+}
+.rightPart p {
+    color: #222;
+    font-weight: 600;
+    text-align: center;
+}
+.kodecneColor {
+    color: #6A3696;
+}
+.entrar {
+    margin: 30px;
+}
+.entrar a {
+    margin: 20px;
+    background-color: #6A3696;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.HomePage02 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 40px;
+}
+.HomePage02 p {
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    margin-left: 20px;
+}
+.HomePage02 img {
+    width: 200px;
+}
+.buscandoProficionais {
+    color: #6A3696;
+}
+.crie-seuPerfil {
+    color: #1F0E2E;
+    font-size: 20px;
+}
+.centralizarPesquisa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 60vh;
+    margin-top: 100px;
+}
+
+.listaResultados {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.itemResultado {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(106,54,150,0.04);
+}
