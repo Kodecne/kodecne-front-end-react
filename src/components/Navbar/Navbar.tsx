@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "lucide-react";
 import style from './Style-Navbar.module.css';
 import navLogo from '../../assets/images/logo kodecne.svg';
 import home from '../../assets/images/home.svg';
+import clip from "../../assets/images/clip.png";
 import { Link, useNavigate } from "react-router-dom";
 import feed from '../../assets/images/feed.svg';
 import messages from '../../assets/images/messages.png';
@@ -13,11 +14,11 @@ import api from "../../services/api";
 
 export function Navbar() {
     const [query, setQuery] = useState("");
-    const [results, setResults] = useState<any[]>([]);
+    const [_results, setResults] = useState<any[]>([]);
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-    const [searchType, setSearchType] = useState("user"); // Tipo de pesquisa
+    const [searchType] = useState("user"); // Tipo de pesquisa
     const [userData, setUserData] = useState<User|null>(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function obterUsuario() {
@@ -57,30 +58,29 @@ export function Navbar() {
     function handleLogout(){
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
-        navigate('/login')
+        navigate('/auth')
     }
 
-    const handleNavigate = (type: string, id: string) => {
-        if (type === "user") navigate(`/profile/${id}`);
-        if (type === "tecnologia") navigate(`/tecnologia/${id}`);
-        if (type === "post") navigate(`/post/${id}`);
-    };
+    // const handleNavigate = (type: string, id: string) => {
+    //     if (type === "user") navigate(`/profile/${id}`);
+    //     if (type === "tecnologia") navigate(`/tecnologia/${id}`);
+    //     if (type === "post") navigate(`/post/${id}`);
+    // };
 
     const handleMouseEnter = () => setIsDropdownVisible(true);
     const handleMouseLeave = () => setIsDropdownVisible(false);
 
-    const handleResultClick = (result: any) => {
-        if (searchType === "user") {
-            navigate(`/perfil/${result.id}`);
-        } else if (searchType === "tecnologia") {
-            navigate(`/tecnologias/${result.id}`);
-        } else if (searchType === "post") {
-            navigate(`/post/${result.id}`);
-        }
-    };
+    // const handleResultClick = (result: any) => {
+    //     if (searchType === "user") {
+    //         navigate(`/perfil/${result.id}`);
+    //     } else if (searchType === "tecnologia") {
+    //         navigate(`/tecnologias/${result.id}`);
+    //     } else if (searchType === "post") {
+    //         navigate(`/post/${result.id}`);
+    //     }
+    // };
 
     return (
-    <header>
         <nav>
             <div className={style.leftItems}>
                 <div className={style.navLogo}>
@@ -139,6 +139,10 @@ export function Navbar() {
                         <img src={feed} alt="Feed" />
                         <p>Feed</p>
                     </Link>
+                    <Link to="/conexoes" className={style.item}>
+                        <img src={clip} alt="Conexões" />
+                        <p>Conexões</p>
+                    </Link>
                     <Link to={"/chat"} className={style.item}>
                         <img src={messages} alt="Mensagens" />
                         <p>Mensagens</p>
@@ -176,6 +180,5 @@ export function Navbar() {
                 </div>
             </div>
         </nav>
-    </header>
     )
 }

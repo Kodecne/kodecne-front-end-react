@@ -1,39 +1,34 @@
-header {
-  position: fixed; /* Fixa o header na tela */
-  top: 0;          /* Alinha o header ao topo da tela */
-  left: 0;         /* Garante que o header comece da borda esquerda */
-  width: 100%;     /* Faz o header ocupar toda a largura da tela */
-  z-index: 1000;   /* Garante que o header fique acima de outros elementos */
-  background-color: #ffffff; /* Cor de fundo para evitar transparência */
-  box-shadow: 0 4px 6px rgba(34, 34, 34, 0.2); /* Sombra suave na parte de baixo */
-}
-
-header nav {
+nav {
   height: 70px;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  width: 100%; /* Garante que o nav ocupe toda a largura */
+  backdrop-filter: blur(10px);
 }
 
-header nav div.navLogo {
+nav div.navLogo {
   width: 100px;
   height: 80px;
 }
 
-header nav div.navLogo img {
+nav div.navLogo img {
   width: 90%;
   height: 90%;
 }
 
-header nav div span {
+nav div span {
   color: #222;
   margin-left: 10px; /* Espaço entre o ícone e o input */
   pointer-events: none;
 }
 
-header nav div.searchContainer {
+nav div.searchContainer {
   position: relative;
   display: flex;
   align-items: center;
@@ -44,7 +39,7 @@ header nav div.searchContainer {
   margin-left: 40px;
 }
 
-header nav div.searchContainer input {
+nav div.searchContainer input {
   border: none;
   outline: none;
   background-color: transparent;
@@ -56,14 +51,14 @@ header nav div.searchContainer input {
   font-size: 16px;
 }
 
-header nav div.navItems {
+nav div.navItems {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 70px;
 }
 
-header nav div a.item {
+nav div a.item {
   display: flex;
   flex-direction: column;
   min-width: 60px;
@@ -77,16 +72,16 @@ header nav div a.item {
   transition: transform 0.3s ease-in-out;
 }
 
-header nav div a.item:hover {
+nav div a.item:hover {
   transform: scale(1.2); /* Aumenta 20% ao passar o mouse */
 }
 
-header nav div a img {
+nav div a img {
   width: 30px;
   height: 30px;
 }
 
-header nav div a p {
+nav div a p {
   color: #222;
   font-size: 12px;
   margin: 3px;

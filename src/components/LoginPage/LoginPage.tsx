@@ -66,7 +66,7 @@ export function LoginPage() {
                 <div className={style.containerFormsColor}>
                     <img src={light} alt="" />
                     <div className={style.containerForms}>
-                        <LoginPageForm onLogin={handleLogin} onRegister={handleRegister} onResetPassword={handleResetPassword} page={false} />
+                        <LoginPageForm onLogin={handleLogin} onRegister={handleRegister} onResetPassword={handleResetPassword} />
                     </div>
                 </div>
             </div>

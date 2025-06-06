@@ -1,113 +1,264 @@
-/* src/pages/PostPage.module.css */
 .postContainer {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 750px; /* Ajustado para um layout mais compacto */
+    margin: 30px auto;
+    padding: 25px;
     background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0; /* Borda mais suave */
+    border-radius: 8px; /* Bordas mais arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais pronunciada */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .cabecalho {
     display: flex;
-    align-items: center;
-    margin-bottom: 16px;
+    align-items: center; /* Alinhamento vertical */
+    margin-bottom: 20px;
     gap: 12px;
 }
 
 .fotoPerfil {
-    width: 48px;
+    width: 48px; /* Tamanho maior para destaque */
     height: 48px;
-    border-radius: 50%;
+    border-radius: 50%; /* Foto de perfil circular */
     object-fit: cover;
-    border: 2px solid #ddd;
+    border: 2px solid #f0f0f0; /* Borda sutil na foto */
+}
+
+.autorInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.autorNome {
+    font-weight: 600; /* Nome do autor em negrito */
+    color: #333;
+    font-size: 16px;
 }
 
 .data {
-    font-size: 0.8rem;
-    color: #888;
+    font-size: 13px;
+    color: #757575; /* Cor mais suave para a data */
 }
 
 .conteudo {
-    font-size: 1rem;
-    color: #333;
-    margin: 12px 0;
-    white-space: pre-line;
+    font-size: 16px;
+    color: #212121; /* Cor de texto principal mais escura */
+    margin: 0 0 20px;
+    line-height: 1.6;
+    white-space: pre-wrap; /* Mantém quebras de linha e espaços */
 }
+
 .toggleMidias {
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    margin: 15px 0;
 }
 
 .toggleMidias button {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 0.5rem 1rem;
+    background-color: #f8f9fa; /* Fundo claro para o botão */
+    border: 1px solid #d1d5da;
+    padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    color: #424242; /* Cor de texto mais escura */
+    font-size: 14px;
+    transition: background-color 0.2s ease;
 }
 
 .toggleMidias button:hover {
-    background-color: #e0e0e0;
-}
-.imagemPost {
-    width: 100%;
-    max-height: 400px;
-    object-fit:  contain    ;
-    border-radius: 10px;
-    margin-top: 12px;
-}
-.interacoes {
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    background-color: #e9ecef;
 }
 
-.botaoCurtir {
-    background-color: #007bff;
+.galeriaMidias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajuste para imagens menores */
+    gap: 8px; /* Espaçamento menor */
+    margin: 20px 0;
+}
+
+.galeriaMidias > *:only-child {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    max-height: 450px; /* Altura máxima maior para imagem única */
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.imagemPost {
+    width: 100%;
+    max-height: 180px; /* Altura máxima para imagens da galeria */
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+}
+
+.imagemPost:hover {
+    transform: scale(1.03); /* Efeito de zoom sutil */
+}
+
+.interacoes {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 15px;
+    margin-top: 20px;
+    border-top: 1px solid #eee; /* Linha divisória mais suave */
+}
+
+.botaoAcao {
+    background-color: #6a1b9a; /* Roxo principal para botões de ação */
     color: white;
-    padding: 6px 12px;
+    padding: 10px 15px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.comentarios {
-    margin-top: 24px;
+.botaoAcao:hover {
+    background-color: #4a148c; /* Roxo mais escuro no hover */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.comentarios ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 16px;
-}
-
-.comentarios li {
-    background: #f4f4f4;
-    padding: 8px;
-    margin-bottom: 6px;
-    border-radius: 4px;
+.likesInfo {
+    font-size: 14px;
+    color: #616161;
 }
 
 .formComentario {
     display: flex;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .formComentario input {
     flex: 1;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    padding: 12px 15px;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formComentario input::placeholder {
+    color: #9e9e9e;
+}
+
+.formComentario input:focus {
+    border-color: #8e44ad; /* Roxo para foco */
+    box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.15);
+    outline: none;
 }
 
 .formComentario button {
-    padding: 8px 16px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    /* Reutiliza o estilo .botaoAcao */
+}
+
+.formComentario button:disabled {
+    background-color: #c3a0d8; /* Roxo claro para desabilitado */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.comentarios {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.semComentarios {
+    color: #757575;
+    font-size: 14px;
+    text-align: center;
+    padding: 15px 0;
+    font-style: italic;
+}
+
+/* Estilos para CommentItem (a serem movidos para CommentItem.module.css posteriormente) */
+.commentItemContainer {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5; /* Linha divisória muito suave */
+}
+
+.commentItemContainer:last-child {
+    border-bottom: none;
+}
+
+.commentFotoPerfil {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.commentConteudo {
+    flex: 1;
+}
+
+.commentAutorNome {
+    font-weight: 600;
+    color: #4a148c; /* Nome do autor do comentário em roxo */
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+.commentTexto {
+    font-size: 14px;
+    color: #424242;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+.commentData {
+    font-size: 12px;
+    color: #9e9e9e;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .postContainer {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .cabecalho {
+        gap: 8px;
+    }
+
+    .fotoPerfil {
+        width: 40px;
+        height: 40px;
+    }
+
+    .autorNome {
+        font-size: 15px;
+    }
+
+    .conteudo {
+        font-size: 15px;
+    }
+
+    .galeriaMidias {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .imagemPost,
+    .galeriaMidias > *:only-child {
+        max-height: 300px;
+    }
+
+    .formComentario {
+        flex-direction: column; /* Empilha o input e botão */
+    }
+
+    .formComentario button {
+        width: 100%;
+    }
 }

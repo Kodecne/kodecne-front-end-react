@@ -10,8 +10,8 @@ export function HomePage() {
                 <div className={style.leftPart}><img src={cadastrese} alt="" /></div>
                 <div className={style.rightPart}>
                     <div className={style.entrar}>
-                        <Link to={'/login'}>CADASTRAR</Link>
-                        <Link to={'/login'}>ENTRAR</Link>
+                        <Link to={'/auth?action=register'}>CADASTRAR</Link>
+                        <Link to={'/auth?action=login'}>ENTRAR</Link>
                     </div>
                     <p>O <span className={style.kodecneColor}>Kodecne</span> é o espaço perfeito para desenvolvedores de todos os níveis se conectarem, compartilharem conhecimento e crescerem juntos. Aqui, você encontra um ambiente interativo feito por devs, para devs, onde pode discutir tecnologias, postar seus projetos, tirar dúvidas e se inspirar com a comunidade.</p>
                 </div>

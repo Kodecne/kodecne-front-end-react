@@ -34,7 +34,7 @@ api.interceptors.response.use(
 
         // Evita redirecionamento se já está na página de login
         const currentPath = window.location.pathname;
-        const isOnLoginPage = currentPath.includes("/login");
+        const isOnLoginPage = currentPath.includes("/auth");
 
         if ((status === 401 || status === 403) && !isOnLoginPage) {
             localStorage.removeItem("accessToken");
@@ -42,7 +42,7 @@ api.interceptors.response.use(
 
             toast.error("Sessão expirada. Faça login novamente.");
 
-            window.location.href = "/login";
+            window.location.href = "/auth";
         }
 
         return Promise.reject(error);

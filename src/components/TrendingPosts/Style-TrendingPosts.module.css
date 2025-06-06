@@ -1,54 +1,84 @@
 .container {
-    background-color: #EBDCFF; /* tom bem suave */
-    padding: 16px 24px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    width: 300px;
-    overflow-y: auto;
-  }
-  
-  .title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #722fa1;
-    margin-bottom: 12px;
-  }
-  
-  .list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .link {
-    background: none;
-    border: none;
-    text-align: left;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 1rem;
-    color: #5d2e84;
-    cursor: pointer;
-  }
-  
-  .link:hover {
-    background-color: #e3d0f9;
-    transform: scale(1.01);
-  }
-  
-  .link:active {
-    transform: scale(0.98);
-  }
-  
+  background-color: var(--primary-color-xlight); /* Usando variável global */
+  padding: 1.5rem; /* 24px */
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 300px;
+  /* overflow-y: auto; Removido se não for sempre necessário scroll */
+  font-family: var(--font-family-sans-serif);
+}
+
+.title {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600; /* Semi-bold */
+  color: var(--primary-color-dark);
+  margin-bottom: 1rem; /* 16px */
+  display: flex;
+  align-items: center;
+}
+
+.title svg {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+  font-size: 1.5rem; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.link {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.75rem 1rem; /* 12px 16px */
+  border-radius: var(--border-radius-md);
+  font-size: 0.9rem; /* 14.4px */
+  color: var(--primary-color-dark);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  display: block; /* Para ocupar a largura total */
+  width: 100%;
+}
+
+.link:hover {
+  background-color: var(--primary-color-light);
+  color: var(--white);
+}
+
+.link:active {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(0.99);
+}
+
+/* A classe .tamanho parece ser para posicionamento geral do container, 
+   se for esse o caso, é melhor aplicá-la a um wrapper em volta do componente 
+   ou ajustar o layout da página que contém este componente. 
+   Mantendo por ora, mas idealmente isso seria gerenciado no layout pai. */
 .tamanho {
-    /*margin-left: auto;
-    margin-right: 100px;
-    margin-top: 20px;*/
-    position: fixed;
-    top: 90px;          /* Distância do topo da tela */
-    right: 60px;         /* Distância da borda direita */
+  position: fixed;
+  top: calc(var(--navbar-height, 70px) + 20px); /* Abaixo da navbar */
+  right: 2rem; /* Consistente com padding da navbar */
+  z-index: 900; /* Abaixo da navbar */
+}
+
+/* Media query para telas menores, se necessário */
+@media (max-width: 992px) { /* Exemplo de breakpoint para tablets */
+  .tamanho {
+    position: static; /* Remove o posicionamento fixo */
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    right: auto;
+  }
+  .container {
+    width: auto; /* Ocupa a largura disponível */
+  }
 }
 
