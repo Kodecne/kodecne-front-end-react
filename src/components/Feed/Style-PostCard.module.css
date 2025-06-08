@@ -240,3 +240,28 @@
 :root {
   --cor-primaria-rgb: 106, 27, 154;
 }
+
+.feedHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  column-gap: 10px;
+  margin-bottom: 15px;
+}
+
+.feedHeader button {
+  padding: 10px 20px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  border: 2px dotted var(--cor-primaria-clara);
+  border-radius: 80px;
+}
+
+.feedHeader button:disabled {
+  border: 1px solid var(--cor-primaria-escura);
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+}
