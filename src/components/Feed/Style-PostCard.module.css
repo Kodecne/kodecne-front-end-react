@@ -1,201 +1,267 @@
 .feedContainer {
-    width: 45%;
-    margin: 20px;
-    margin-right: 200px;
-    margin-top: 90px;
+  width: 100%; /* Ocupa mais espaço, o PostPage já tem max-width */
+  max-width: 750px; /* Consistente com PostPage */
+  margin: 20px auto; /* Centralizado */
+  padding: 0 15px; /* Espaçamento lateral em telas menores */
 }
+
 .postCard {
-    background-color: #ffffff;
-    border: 1px solid gray;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    width: 100%;
-  }
-  
-  .cabecalho {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-    gap: 12px;
-  }
-  
-  .fotoPerfil {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ddd;
-  }
-  
-  .cabecalho div {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .data {
-    font-size: 0.8rem;
-    color: #888;
-  }
-  
-  .conteudo {
-    font-size: 1rem;
-    color: #333;
-    margin: 12px 0;
-    white-space: pre-line;
-  }
-  
-  .imagemPost {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-top: 12px;
-  }
-  
-  .acoesPost {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #eee;
-  }
-  
-  .botaoAcao {
-    background: none;
-    border: none;
-    color: #555;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background 0.2s, color 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .botaoAcao:hover {
-    background-color: #f0f0f0;
-    color: #000;
-  }
-  
-  .icone {
-    font-size: 1.1rem;
-  }
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--borda-radius-padrao);
+  padding: 20px; /* Mais padding interno */
+  margin-bottom: 25px; /* Maior espaçamento entre cards */
+  box-shadow: var(--sombra-padrao);
+  width: 100%;
+}
 
+.cabecalho {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 12px;
+}
 
-  
+.fotoPerfil {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--cor-secundaria); /* Borda com cor secundária */
+}
 
+.autorInfo {
+  display: flex;
+  flex-direction: column;
+}
 
+.autorNome {
+  font-weight: 600;
+  color: var(--cor-texto-principal);
+  font-size: 1rem; /* 16px */
+}
 
+.data {
+  font-size: 0.875rem; /* 14px */
+  color: var(--cor-texto-secundario);
+}
 
-  .caixaCriarPost {
-    display: flex;
-    flex-direction: column;
-    background-color: #EBDCFF;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 16px;
-  }
-  
-  .textarea {
-    min-height: 100px;
-    border: 1px solid gray;
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 16px;
-    resize: vertical;
-    margin-bottom: 12px;
-  }
-  
-  .inputFile {
-    margin-bottom: 12px;
-  }
-  
-  .previewContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  
-  .previewImagem {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  .previewVideoContainer {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #ccc;
-  }
-  
-  .previewVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    filter: brightness(0.6);
-  }
-  
-  .videoOverlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 24px;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 4px 8px;
-    border-radius: 6px;
-    pointer-events: none;
-  }
-  
-  .botao {
-    align-self: flex-end;
-    background-color: #6A3696;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-right: 10px;
-  }
-  
-  .botao:hover {
-    background-color: #54297b;
-  }
-  .inputFileLabel {
-    display: inline-block;
-    background-color: #6A3696;
-    color: white;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-    text-align: center;
-    transition: background-color 0.2s ease;
-    width: fit-content;
-    margin-bottom: 12px;
-  }
-  
-  .inputFileLabel:hover {
-    background-color: #54297b;
-  }
-  
-  .inputFile {
-    display: none;
-  }
-  
-  
+.conteudo {
+  font-size: 1rem;
+  color: var(--cor-texto-principal);
+  margin: 16px 0;
+  white-space: pre-wrap; /* Mantém quebras de linha e espaços */
+  line-height: 1.6;
+}
+
+.imagemPost {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: var(--borda-radius-padrao);
+  margin-top: 16px;
+  border: 1px solid var(--cor-borda);
+}
+
+.acoesPost {
+  display: flex;
+  justify-content: space-around; /* Ou flex-start com gap */
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.acoesPost span { /* Para contadores, se houver */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-texto-secundario);
+  font-size: 0.875rem;
+}
+
+.botaoAcao {
+  background-color: transparent;
+  border: 1px solid transparent; /* Para manter alinhamento, pode ser var(--cor-borda) sutil */
+  color: var(--cor-texto-secundario);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--borda-radius-padrao);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.botaoAcao:hover {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria-escura);
+  border-color: var(--cor-primaria-clara); /* Borda sutil no hover */
+}
+
+.botaoAcao.curtido {
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+.icone {
+  font-size: 1.2rem; /* Ícones um pouco maiores */
+}
+
+/* Estilização da Caixa de Criar Post */
+.caixaCriarPost {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cor-superficie);
+  border-radius: var(--borda-radius-padrao);
+  box-shadow: var(--sombra-padrao);
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid var(--cor-borda);
+}
+
+.textarea {
+  min-height: 100px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--borda-radius-padrao);
+  padding: 12px 15px;
+  font-size: 1rem;
+  resize: vertical;
+  margin-bottom: 15px;
+  background-color: #fff; /* Garante fundo branco se o body for escuro */
+  color: var(--cor-texto-principal);
+}
+
+.textarea::placeholder {
+  color: var(--cor-texto-secundario);
+  opacity: 0.8;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(var(--cor-primaria-rgb, 106, 27, 154), 0.15); /* Usar RGB da cor primária */
+}
+
+.acoesCriarPost {
+  display: flex;
+  justify-content: space-between; /* Alinha input de arquivo à esquerda e botão à direita */
+  align-items: center;
+  gap: 10px;
+}
+
+.previewContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.previewImagem, .previewVideoContainer {
+  width: 80px; /* Menor preview */
+  height: 80px;
+  object-fit: cover;
+  border-radius: calc(var(--borda-radius-padrao) - 2px); /* Borda interna */
+  border: 1px solid var(--cor-borda);
+  position: relative; /* Para o overlay do vídeo */
+  overflow: hidden;
+}
+
+.previewVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 1.8rem; /* Ícone de play maior */
+  pointer-events: none;
+}
+
+.botaoPostar {
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--borda-radius-padrao);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+
+.botaoPostar:hover {
+  background-color: var(--cor-primaria-escura);
+}
+
+.botaoPostar:disabled {
+  background-color: var(--cor-primaria-clara);
+  cursor: not-allowed;
+}
+
+.inputFileLabel {
+  display: inline-flex; /* Para alinhar ícone e texto */
+  align-items: center;
+  gap: 8px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  padding: 10px 15px;
+  border-radius: var(--borda-radius-padrao);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: 1px solid var(--cor-primaria-clara);
+}
+
+.inputFileLabel:hover {
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+}
+
+.inputFile {
+  display: none; /* Mantém o input original escondido */
+}
+
+/* Adicionar :root { --cor-primaria-rgb: 106, 27, 154; } no global.css ou aqui se não quiser no global */
+/* Isso é para o box-shadow no foco do textarea */
+:root {
+  --cor-primaria-rgb: 106, 27, 154;
+}
+
+.feedHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  column-gap: 10px;
+  margin-bottom: 15px;
+}
+
+.feedHeader button {
+  padding: 10px 20px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  border: 2px dotted var(--cor-primaria-clara);
+  border-radius: 80px;
+}
+
+.feedHeader button:disabled {
+  border: 1px solid var(--cor-primaria-escura);
+  background-color: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+}

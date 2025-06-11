@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Navbar } from "./components/Navbar/Navbar.tsx"
 import { HomePage } from "./components/HomePage/HomePage.tsx";
 import { Footer } from "./components/Footer/Footer.tsx"
 import { SobreNos } from "./components/SobreNos/SobreNos.tsx";
@@ -20,14 +19,14 @@ import { Pesquisa } from "./components/Pesquisa/Pesquisa";
 export function AppRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<><Navbar /><HomePage /><Footer /></>} />
-            <Route path="/sobrenos" element={<><Navbar /><SobreNos /><Footer /></>} />
-            <Route path="/auth" element={<><Navbar /><LoginPage /><Footer /></>} />
-            <Route path="/perfil" element={<><Navbar /><UserPerfil /></>} />
-            <Route path="/settings" element={<><Navbar /><SettingsPage /><Footer /></>} />
+            <Route path="/" element={<><HomePage /><Footer /></>} />
+            <Route path="/sobrenos" element={<><SobreNos /><Footer /></>} />
+            <Route path="/auth" element={<><LoginPage /><Footer /></>} />
+            <Route path="/perfil" element={<><UserPerfil /></>} />
+            <Route path="/settings" element={<><SettingsPage /><Footer /></>} />
             <Route path="/feed" element={
                 <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-                    <Navbar />
+                    
                     <div style={{ display: 'flex', justifyContent: 'center', flex: 1, gap: '50px' }}>
                         <Feed />
                         <Trending />
@@ -35,14 +34,14 @@ export function AppRoutes() {
                 </div>
             }
             />
-            <Route path="/pesquisa" element={<><Navbar /><Pesquisa /><Footer /></>} />
+            <Route path="/pesquisa" element={<><Pesquisa /><Footer /></>} />
             <Route path="/post/:id" element={<PostPage />} />
-            <Route path="/conexoes" element={<><Navbar /><Conexoes /></>} />
-            <Route path="/support" element={<><Navbar /><Support /><Footer /></>} />
-            <Route path="/contatos" element={<><Navbar /><ContactList /></>} />
-            <Route path="/notificacoes" element={<><Navbar /><NotificationList /></>} />
-            <Route path="/chat" element={<><Navbar /><ChatPage /></>} />
-            <Route path="/chat/:userId" element={<><Navbar /><ChatPage /></>} />
+            <Route path="/conexoes" element={<><Conexoes /></>} />
+            <Route path="/support" element={<><Support /><Footer /></>} />
+            <Route path="/contatos" element={<><ContactList /></>} />
+            <Route path="/notificacoes" element={<><NotificationList /></>} />
+            <Route path="/chat" element={<><ChatPage /></>} />
+            <Route path="/chat/:userId" element={<><ChatPage /></>} />
         </Routes>
     );
 }

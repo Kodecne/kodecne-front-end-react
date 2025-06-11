@@ -1,13 +1,74 @@
-* {
+:root {
+    --cor-primaria: #6A1B9A; /* Roxo principal */
+    --cor-primaria-escura: #4A148C;
+    --cor-primaria-clara: #C3A0D8;
+    --cor-secundaria: #EDE7F6; /* Roxo bem claro / Lavanda */
+    --cor-fundo: #F5F5F5; /* Cinza muito claro para o fundo */
+    --cor-superficie: #FFFFFF; /* Branco para cards e superfícies */
+    --cor-texto-principal: #212121;
+    --cor-texto-secundario: #757575;
+    --cor-borda: #E0E0E0;
+    --cor-sucesso: #4CAF50;
+    --cor-erro: #F44336;
+    --cor-aviso: #FF9800;
+
+    --fonte-principal: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --borda-radius-padrao: 8px;
+}
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    width: 100vw;
+    min-height: 100svh;
+}
+
 a {
     text-decoration: none;
+    color: var(--cor-primaria);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--cor-primaria-escura);
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
     color: inherit;
 }
-body {
-    color: rgb(0, 0, 0);
+
+button {
+    cursor: pointer;
 }
+
+/* Adicionar mais resets ou estilos base conforme necessário */

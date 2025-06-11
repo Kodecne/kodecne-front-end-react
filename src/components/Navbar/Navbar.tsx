@@ -81,7 +81,6 @@ export function Navbar() {
     // };
 
     return (
-    <header>
         <nav>
             <div className={style.leftItems}>
                 <div className={style.navLogo}>
@@ -181,6 +180,5 @@ export function Navbar() {
                 </div>
             </div>
         </nav>
-    </header>
     )
 }

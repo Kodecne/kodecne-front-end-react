@@ -6,10 +6,12 @@ import { ToastHandler } from './components/ToastHandler.tsx';
 import './styles/global.css'
 
 import { AppRoutes } from './routes.tsx'
+import { Navbar } from './components/Navbar/Navbar.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+    <Navbar />
       <ToastHandler/>
       <AppRoutes />
     </BrowserRouter>

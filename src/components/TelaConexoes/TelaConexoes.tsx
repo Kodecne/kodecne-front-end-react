@@ -54,7 +54,7 @@ export function TelaConexoes({ usuariosDisponiveis }: TelaConexoesProps) {
       setPagina(0);
       setExibindoResultados(true);
       setIsLoading(false);
-    }, 1500); // Tempo de espera de 1.5 segundos
+    }, 2500); // Tempo de espera de 1.5 segundos
   };
 
   const voltar = () => {

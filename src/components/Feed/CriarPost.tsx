@@ -11,7 +11,7 @@ export function CriarPost() {
   const handleMidiaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     setMidias(files);
-    const previews = files.map(file => URL.createObjectURL(file));
+    const previews = files.map((file) => URL.createObjectURL(file));
     setPreviewMidias(previews);
   };
 
@@ -28,9 +28,9 @@ export function CriarPost() {
     });
 
     try {
-      await api.post('/posts/', form, {
+      await api.post("/posts/", form, {
         headers: {
-          "Content-Type": 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
       toast.success("Post criado com sucesso!");
@@ -54,46 +54,53 @@ export function CriarPost() {
         placeholder="Compartilhe algo com a nossa comunidade..."
       />
 
-      <label className={style.inputFileLabel}>
-        Selecionar mídias
-        <input
-          type="file"
-          accept="image/*,video/*"
-          multiple
-          onChange={handleMidiaChange}
-          className={style.inputFile}
-        />
-      </label>
-
-      {previewMidias.length > 0 && (
-        <div className={style.previewContainer}>
-          {midias.map((file, index) => (
-            isVideo(file) ? (
-              <div key={index} className={style.previewVideoContainer}>
-                <video
-                  className={style.previewVideo}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
+        <label className={style.inputFileLabel}>
+          Selecionar mídias
+          <input
+            type="file"
+            accept="image/*,video/*"
+            multiple
+            onChange={handleMidiaChange}
+            className={style.inputFile}
+          />
+        </label>
+        {previewMidias.length > 0 && (
+          <div className={style.previewContainer}>
+            {midias.map((file, index) =>
+              isVideo(file) ? (
+                <div key={index} className={style.previewVideoContainer}>
+                  <video
+                    className={style.previewVideo}
+                    src={previewMidias[index]}
+                    muted
+                    preload="metadata"
+                    playsInline
+                  />
+                  <div className={style.videoOverlay}></div>
+                </div>
+              ) : (
+                <img
+                  key={index}
                   src={previewMidias[index]}
-                  muted
-                  preload="metadata"
-                  playsInline
+                  alt={`Preview ${index + 1}`}
+                  className={style.previewImagem}
                 />
-                <div className={style.videoOverlay}></div>
-              </div>
-            ) : (
-              <img
-                key={index}
-                src={previewMidias[index]}
-                alt={`Preview ${index + 1}`}
-                className={style.previewImagem}
-              />
-            )
-          ))}
-        </div>
-      )}
+              )
+            )}
+          </div>
+        )}
 
-      <button className={style.botao} onClick={handlePostar}>
-        Postar
-      </button>
+        <button className={style.botaoPostar} onClick={handlePostar}>
+          Postar
+        </button>
+      </div>
     </div>
   );
 }

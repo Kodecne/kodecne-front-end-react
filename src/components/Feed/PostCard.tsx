@@ -94,7 +94,12 @@ export function PostCard({ post }: PostCardProps) {
             alt={post.autor.name}
             className={style.fotoPerfil}
           />
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <strong>{post.autor.name}</strong>
             <span className={style.data}>{tempoExibicao}</span>
           </div>

@@ -60,8 +60,8 @@ export function PostPage() {
         <div className={style.postContainer}>
             <div className={style.cabecalho}>
                 <img src={post.autor.imagem} alt={post.autor.name} className={style.fotoPerfil} />
-                <div>
-                    <strong>{post.autor.name}</strong>
+                <div className={style.autorInfo}>
+                    <span className={style.autorNome}>{post.autor.name}</span>
                     <span className={style.data}>{new Date(post.data).toLocaleString()}</span>
                 </div>
             </div>
@@ -97,8 +97,8 @@ export function PostPage() {
 
             {/* Botão de curtir */}
             <div className={style.interacoes}>
-                <button onClick={curtirPost} className={style.botaoCurtir}>Curtir</button>
-                <span>{likes} curtida{likes === 1 ? '' : 's'}</span>
+                <button onClick={curtirPost} className={style.botaoAcao}>Curtir</button>
+                <span className={style.likesInfo}>{likes} curtida{likes === 1 ? '' : 's'}</span>
             </div>
             <form
                 className={style.formComentario}
@@ -117,23 +117,26 @@ export function PostPage() {
                 <button
                     type="submit"
                     disabled={!novoComentario.trim()}
+                    className={style.botaoAcao} // Adicionada a classe .botaoAcao
                 >
                     Enviar
                 </button>
             </form>
             {/* Comentários */}
-            {post.comentarios.length > 0 ? (
-                post.comentarios.map((comentario) => (
-                    <CommentItem
-                        key={comentario.id}
-                        usuario={comentario.usuario}
-                        texto={comentario.texto}
-                        data={comentario.data}
-                    />
-                ))
-            ) : (
-                <p>Seja o primeiro a comentar!</p>
-            )}
+            <div className={style.comentarios}>
+                {post.comentarios.length > 0 ? (
+                    post.comentarios.map((comentario) => (
+                        <CommentItem
+                            key={comentario.id}
+                            usuario={comentario.usuario}
+                            texto={comentario.texto}
+                            data={comentario.data}
+                        />
+                    ))
+                ) : (
+                    <p className={style.semComentarios}>Seja o primeiro a comentar!</p> // Adicionada a classe .semComentarios
+                )}
+            </div>
         </div>
     );
 }
